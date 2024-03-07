@@ -145,11 +145,11 @@ button{
         <div class="shape"></div>
         <div class="shape"></div>
     </div>
-    <form>
-        <h3>Login Here</h3>
+            <form method="post" action="">
+
+        <h3>Login Here parent</h3>
 
         <label for="username">Username</label>
-        <form method="post" action="">
             {% csrf_token %}
         <input type="text" placeholder="Email or Phone" id="username" name="username">
 
@@ -157,7 +157,6 @@ button{
         <input type="password" placeholder="Password" id="password" name="password">
 
         <button>Log In </button>
-        </form>
         {% for message in messages %}
         <p id="messages">{{ message }}</p>
 

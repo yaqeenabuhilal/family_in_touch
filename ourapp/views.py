@@ -67,7 +67,7 @@ def loginParent(request):
         else:
             messages.info(request, 'username OR password incorrert')
     context = {}
-    return render(request,'ourapp/login.html',context)
+    return render(request,'ourapp/log _in _parent.html',context)
 def loginpsychologist(request):
     if request.method == 'POST':
         username = request.POST.get('username')
