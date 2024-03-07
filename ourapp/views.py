@@ -52,3 +52,19 @@ def singupteenager(request):
             return redirect('loginTeenager')
     context = {'form': form}
     return render(request, 'ourapp/singupteenager.html', context)
+def loginParent(request):
+    if request.method == 'POST':
+        username = request.POST.get('username')
+        password = request.POST.get('password')
+        user = authenticate(request, username=username, password=password)
+        if user is not None:
+            users_in_group = Group.objects.get(name='Parents').user_set.all()
+            if user in users_in_group:
+                login(request, user)
+                return redirect('dashbord')
+            else:
+                messages.info(request, 'username OR password incorrert')
+        else:
+            messages.info(request, 'username OR password incorrert')
+    context = {}
+    return  render(request,'ourapp/login.html',context)
