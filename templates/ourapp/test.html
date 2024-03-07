@@ -8,14 +8,24 @@
 <ul class="menu">
   <li><a href="#" class="active">Home</a></li>
   <li><a href="{% url 'loginTeenager' %}">About</a></li>
-  <li><a href="{% url 'singupteenger' %}">sing up</a></li>
+     <li>
+<div class="dropdown1">
+
+  <span>sing up</span>
+  <div class="dropdown-content1">
+<a href="{% url 'singupteenger' %}">sing up parent</a>
+      <a href="#">sing up teenager</a>
+  </div>
+</div>
+    </li>
     <li>
 <div class="dropdown">
+
   <span>log in</span>
   <div class="dropdown-content">
-<a href="#">log in parent</a>
+<a href="{% url 'loginParent' %}">log in parent</a>
       <a href="{% url 'loginTeenager' %}">log in teenager</a>
-      <a href="#">log in pyschalogist</a>
+      <a href="{% url 'loginpsychologist' %}">log in psychologist</a>
   </div>
 </div>
     </li>
