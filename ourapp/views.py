@@ -9,7 +9,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import Group
 from .models import *
 from itertools import count, repeat,chain
-from .forms import CreatUserForm
+from .forms import CreateUserForm
 
 def home(request):
     return render(request,'ourapp/dashbord.html')
@@ -40,9 +40,9 @@ def aaa(request):
     return render(request,'ourapp/login.html')
 
 def singupteenager(request):
-    form = CreatUserForm()
+    form = CreateUserForm()
     if request.method == 'POST':
-        form = CreatUserForm(request.POST)
+        form = CreateUserForm(request.POST)
         if form.is_valid():
             user = form.save()
             username = form.cleaned_data.get('username')
@@ -67,4 +67,20 @@ def loginParent(request):
         else:
             messages.info(request, 'username OR password incorrert')
     context = {}
-    return  render(request,'ourapp/login.html',context)
+    return render(request,'ourapp/login.html',context)
+def loginpsychologist(request):
+    if request.method == 'POST':
+        username = request.POST.get('username')
+        password = request.POST.get('password')
+        user = authenticate(request, username=username, password=password)
+        if user is not None:
+            users_in_group = Group.objects.get(name='Psychotherapist').user_set.all()
+            if user in users_in_group:
+                login(request, user)
+                return redirect('dashbord')
+            else:
+                messages.info(request, 'username OR password incorrert')
+        else:
+            messages.info(request, 'username OR password incorrert')
+    context = {}
+    return render(request, 'ourapp/log_in_psy.html', context)
