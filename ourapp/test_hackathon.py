@@ -145,3 +145,65 @@ class TestPassword(unittest.TestCase):
         self.assertTrue(is_whitespace_included("Password123"))  # בודק אם הסיסמה אינה מכילה רווחים
     def test_password_with_whitespace(self):
         self.assertFalse(is_whitespace_included("Pass word123"))  # בודק אם הסיסמה מכילה רווחים
+
+
+   # class TestSignUpParents(TestCase):
+     #   def setUp(self):
+      #      self.url = reverse('sign_up_parent')
+
+            # יצירת משתמש לצורך בדיקות
+       #     self.user = User.objects.create_user(username='test_user', password='test_password')
+
+            # בדיקה אם קבוצת "הורים" קיימת, יצירתה במידה ולא
+        #    self.group, _ = Group.objects.get_or_create(name='Parents')
+         #   self.group.user_set.add(self.user)
+
+        ## בדיקות עבור פונקציית `test_signup_invalid_form`:
+
+       # def test_empty_username(self):
+        #    """
+         #   בדיקה עבור שם משתמש ריק.
+          #  """
+           # response = self.client.post(self.url, {'username': '', 'password1': 'test_password123',
+                                                  # 'password2': 'test_password123'})
+            #self.assertContains(response, 'This field is required.')
+
+        #def test_invalid_password(self):
+         #   """
+          #  בדיקה עבור סיסמה לא חוקית (קצרה מדי).
+           # """
+            #response = self.client.post(self.url,
+             #                           {'username': 'test_username', 'password1': 'short', 'password2': 'short'})
+            #self.assertContains(response, 'This password is too short.')
+
+        #def test_password_mismatch(self):
+         #   """
+          #  בדיקה עבור אי התאמה בין סיסמה לאימות סיסמה.
+          #  """
+           # response = self.client.post(self.url, {'username': 'test_username', 'password1': 'test_password123',
+            #                                       'password2': 'wrong_password'})
+            #self.assertContains(response, 'The two password fields didn\'t match.')
+
+        ## בדיקות נוספות (הוסף לפי הצורך):
+
+        #def test_existing_username(self):
+
+                # יצירת משתמש נוסף עם אותו שם משתמש
+    """
+                User.objects.create_user(username='test_username', password='test_password123')
+                response = self.client.post(self.url, {'username': 'test_username', 'password1': 'test_password123',
+                                                       'password2': 'test_password123'})
+                self.assertContains(response, 'This username is already taken.')
+    
+            def test_successful_signup(self):
+            
+            #בדיקה עבור הרשמה מוצלחת.
+      
+            response = self.client.post(self.url, {'username': 'new_username', 'password1': 'test_password123',
+                                                   'password2': 'test_password123'})
+            # בדיקה שהמשתמש נוצר בהצלחה
+            self.assertEqual(User.objects.filter(username='new_username').count(), 1)
+            # בדיקה שהמשתמש נוסף לקבוצת "הורים"
+            self.assertTrue(self.group.user_set.filter(username='new_username').exists())
+  
+"""
