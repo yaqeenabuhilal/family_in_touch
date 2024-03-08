@@ -17,4 +17,20 @@ class TestLoginParents(TestCase):
         response = self.client.post(self.url, {'username': 'incorrect_username', 'password': 'incorrect_password'})
         self.assertContains(response, 'username OR password incorrert')
 
+class TestSignUpParents(TestCase):
+    def setUp(self):
+        self.url = reverse('sign_up_parent')
+        self.user = User.objects.create_user(username='test_user', password='test_password')
+
+        # בדיקה אם הקבוצה כבר קיימת ורק אז יוצרים אותה
+        if not Group.objects.filter(name='Parents').exists():
+            group = Group.objects.create(name='Parents')
+            group.user_set.add(self.user)
+        else:
+            group = Group.objects.get(name='Parents')
+            group.user_set.add(self.user)
+    def test_signup_invalid_form(self):
+        # בדיקה כאשר ניסיון ליצור משתמש הורה עם פרטים לא תקינים
+        response = self.client.post(self.url,{'username': '', 'password1': 'test_password123', 'password2': 'test_password123'})
+        self.assertContains(response, 'This field is required.')
 
