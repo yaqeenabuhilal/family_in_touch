@@ -34,3 +34,18 @@ class TestSignUpParents(TestCase):
         response = self.client.post(self.url,{'username': '', 'password1': 'test_password123', 'password2': 'test_password123'})
         self.assertContains(response, 'This field is required.')
 
+class TestLoginTeenager(TestCase):
+    def setUp(self):
+        self.url = reverse('loginTeenager')
+        self.user = User.objects.create_user(username='test_user', password='test_password')
+        Group.objects.create(name='Teengers').user_set.add(self.user)
+
+    def test_login_successful(self):
+        # בדיקה כאשר הפרטים שהוזנו הם נכונים
+        response = self.client.post(self.url, {'username': 'test_user', 'password': 'test_password'})
+        self.assertRedirects(response, reverse('dashbord'))
+
+    def test_login_unsuccessful(self):
+        # בדיקה כאשר שם המשתמש או הסיסמה אינם נכונים
+        response = self.client.post(self.url, {'username': 'incorrect_username', 'password': 'incorrect_password'})
+        self.assertContains(response, 'username OR password incorrert')
