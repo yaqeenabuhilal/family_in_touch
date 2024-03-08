@@ -10,6 +10,7 @@ from .models import *
 from itertools import count, repeat,chain
 from .forms import CreateUserForm
 
+
 def home(request):
     return render(request,'ourapp/dashbord.html')
 
@@ -99,5 +100,4 @@ def sign_up_parent(request):
             messages.success(request, 'Account was created for ' + username)
             return redirect('loginParent')
     context = {'form': form}
-
     return render(request, 'ourapp/sign_up_parent.html', context)
