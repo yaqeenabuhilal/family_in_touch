@@ -2,6 +2,10 @@ from django.test import TestCase
 from django.urls import reverse
 from django.contrib.auth.models import User
 from django.contrib.auth.models import Group
+import unittest
+import re
+from django.test import RequestFactory
+from ourapp.views import loginParent
 
 class TestLoginParents(TestCase):
     def setUp(self):
@@ -49,3 +53,40 @@ class TestLoginTeenager(TestCase):
         # בדיקה כאשר שם המשתמש או הסיסמה אינם נכונים
         response = self.client.post(self.url, {'username': 'incorrect_username', 'password': 'incorrect_password'})
         self.assertContains(response, 'username OR password incorrert')
+
+
+
+
+
+
+#בדיקות יחידה AI
+def is_username_empty(username):
+    return bool(username)  # בודק האם המחרוזת של שם המשתמש אינה ריקה
+
+
+class TestUsername(unittest.TestCase):
+    def test_non_empty_username(self):
+        self.assertTrue(is_username_empty("user123"))  # בודק אם שם המשתמש אינו ריק
+
+    def test_empty_username(self):
+        self.assertFalse(is_username_empty(""))  # בודק אם שם המשתמש ריק
+
+
+def is_password_empty(password):
+    return bool(password)  # בודק האם המחרוזת של הסיסמה אינה ריקה
+class TestPassword(unittest.TestCase):
+    def test_non_empty_password(self):
+        self.assertTrue(is_password_empty("SecurePassword123"))  # בודק אם הסיסמה אינה ריקה
+
+    def test_empty_password(self):
+        self.assertFalse(is_password_empty(""))  # בודק אם הסיסמה ריקה
+
+
+def is_whitespace_included(password):
+    return ' ' not in password  # בודק האם יש רווחים בסיסמה
+
+class TestPassword(unittest.TestCase):
+    def test_password_with_no_whitespace(self):
+        self.assertTrue(is_whitespace_included("Password123"))  # בודק אם הסיסמה אינה מכילה רווחים
+    def test_password_with_whitespace(self):
+        self.assertFalse(is_whitespace_included("Pass word123"))  # בודק אם הסיסמה מכילה רווחים
