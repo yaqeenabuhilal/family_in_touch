@@ -72,6 +72,29 @@ class TestLoginTeenager(TestCase):
         response = self.client.post(self.url, {'username': 'incorrect_username', 'password': 'incorrect_password'})
         self.assertContains(response, 'username OR password incorrert')
 
+###############################################################
+
+
+class TestLoginTeenagerai(TestCase):
+    def setUp(self):
+        self.url = reverse('loginTeenager')
+        self.user = User.objects.create_user(username='testuser', password='password123')
+        Group.objects.create(name='Teengers').user_set.add(self.user)
+    def test_login_success(self):
+        response = self.client.post('/loginTeenager/', {'username': 'testuser', 'password': 'password123'})
+        self.assertEqual(response.status_code, 302)
+        # self.assertContains(response, 'Login successful')
+    #
+    def test_login_failure(self):
+        response = self.client.post('/loginTeenager/', {'username': 'testuser', 'password': 'wrongpassword'})
+        self.assertEqual(response.status_code, 200)
+        # self.assertContains(response, 'Login failed')
+
+    def test_empty_fields(self):
+        response = self.client.post('/loginTeenager/', {'username': '', 'password': ''})
+        self.assertEqual(response.status_code, 200)
+        # self.assertContains(response, 'Please fill in all fields')
+
 class TestLoginPsychologist(TestCase):
     def setUp(self):
         self.url = reverse('loginpsychologist')
