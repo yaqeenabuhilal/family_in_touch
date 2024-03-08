@@ -8,7 +8,19 @@
 <ul class="menu">
   <li><a href="#" class="active">Home</a></li>
   <li><a href="{% url 'loginTeenager' %}">About</a></li>
-  <li><a href="{% url 'singupteenger' %}">sing up</a></li>
+
+
+    <li>
+<div class="dropdown">
+  <span>sign up</span>
+  <div class="dropdown-content">
+<a href="{% url 'singupteenger' %}">sing up teenger</a>
+      <a href="{% url 'sign_up_parent' %}">sign up parent</a>
+
+  </div>
+</div>
+    </li>
+
     <li>
 <div class="dropdown">
   <span>log in</span>
