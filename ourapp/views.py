@@ -1,4 +1,3 @@
-
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.forms import inlineformset_factory
@@ -10,6 +9,7 @@ from django.contrib.auth.models import Group
 from .models import *
 from itertools import count, repeat,chain
 from .forms import CreateUserForm
+
 
 def home(request):
     return render(request,'ourapp/dashbord.html')
@@ -84,3 +84,20 @@ def loginpsychologist(request):
             messages.info(request, 'username OR password incorrert')
     context = {}
     return render(request, 'ourapp/log_in_psy.html', context)
+
+
+
+
+def sign_up_parent(request):
+    form = CreateUserForm()
+    if request.method == 'POST':
+        form = CreateUserForm(request.POST)
+        if form.is_valid():
+            user = form.save()
+            username = form.cleaned_data.get('username')
+            group = Group.objects.get(name='Parents')
+            user.groups.add(group)
+            messages.success(request, 'Account was created for ' + username)
+            return redirect('loginParent')
+    context = {'form': form}
+    return render(request, 'ourapp/sign_up_parent.html', context)
