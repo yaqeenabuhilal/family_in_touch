@@ -1,5 +1,4 @@
 {% extends 'ourapp/main.html' %}
-
 {% block content %}
 {% load static %}
 
@@ -156,13 +155,12 @@ button{
         <label for="password">Password</label>
         <input type="password" placeholder="Password" id="password" name="password">
 
-        <button>Log In </button>
+        <button >Log In </button>
+            </form>
         {% for message in messages %}
         <p id="messages">{{ message }}</p>
-
     {% endfor %}
 
-    </form>
 </body>
 </html>
 
