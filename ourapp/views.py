@@ -14,10 +14,39 @@ from .forms import CreateUserForm
 def home(request):
     return render(request,'ourapp/dashbord.html')
 
+def feedback_parent(request):
+    return render(request,'ourapp/feedback_parent.html')
+
+
+def feedback_teenger(request):
+    return render(request,'ourapp/feedback_teenger.html')
+
+def feedback_psy_teenger(request):
+    feedback_psy_teenger=TeengerFeedback.objects.all()
+
+    return render(request,'ourapp/feedback_psy_teenger.html',{'feedback_psy_teenger':feedback_psy_teenger})
+def feedback_psy_parent(request):
+    feedback_psy_parent=ParentFeedback.objects.all()
+
+    return render(request,'ourapp/feedback_psy_parent.html',{'feedback_psy_parent':feedback_psy_parent})
+def summary_psy(request):
+    return render(request,'ourapp/summary_psy.html')
+
+
+def drop_down_list_psy(request):
+    return render(request,'ourapp/drop_down_list_psy.html')
+
 def feedback(request):
     return render(request,'ourapp/feedback.html')
 def link(request):
     return render(request,'ourapp/link.html')
+def testerforfeed(request):
+    return render(request,'ourapp/testerforfeed.html')
+
+
+
+
+
 def loginTeenager(request):
     if request.method == 'POST':
         username = request.POST.get('username')
