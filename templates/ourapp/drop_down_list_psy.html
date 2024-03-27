@@ -1,0 +1,18 @@
+
+{% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static '/css/drop_down_list_psy.css' %}">
+
+<details class="dropdown">
+    <summary role="button">
+      <a class="button">chosses a user type</a>
+    </summary>
+    <ul>
+
+        <li><a href="{% url 'feedback_parent' %}">parent's feedback</a></li>
+
+        <li><a href="{% url 'feedback_teenger' %}">teenger's feedback</a></li>
+
+
+
+  </ul>
+</details>
