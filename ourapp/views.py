@@ -27,13 +27,14 @@ def loginTeenager(request):
             users_in_group = Group.objects.get(name='Teengers').user_set.all()
             if user in users_in_group:
                 login(request, user)
-                return redirect('dashbord')
+                return redirect('homepage_teenager')
             else:
                 messages.info(request, 'username OR password incorrert')
         else:
             messages.info(request, 'username OR password incorrert')
     context = {}
     return  render(request,'ourapp/login.html',context)
+
 def test(request):
     return render(request,'ourapp/test.html')
 def aaa(request):
@@ -61,7 +62,7 @@ def loginParent(request):
             users_in_group = Group.objects.get(name='Parents').user_set.all()
             if user in users_in_group:
                 login(request, user)
-                return redirect('dashbord')
+                return redirect('homepage_parent')
             else:
                 messages.info(request, 'username OR password incorrert')
         else:
@@ -77,16 +78,14 @@ def loginpsychologist(request):
             users_in_group = Group.objects.get(name='Psychotherapist').user_set.all()
             if user in users_in_group:
                 login(request, user)
-                return redirect('dashbord')
+                return redirect('homepageforpsy')
+
             else:
                 messages.info(request, 'username OR password incorrert')
         else:
-            messages.info(request, 'username OR password incorrert')
+                messages.info(request, 'username OR password incorrert')
     context = {}
-    return render(request, 'ourapp/log_in_psy.html', context)
-
-
-
+    return render(request, 'ourapp/loginpsychologist.html', context)
 
 def sign_up_parent(request):
     form = CreateUserForm()
@@ -101,3 +100,13 @@ def sign_up_parent(request):
             return redirect('loginParent')
     context = {'form': form}
     return render(request, 'ourapp/sign_up_parent.html', context)
+
+def navbarforpsy(request):
+    return render(request, 'ourapp/navbarforpsy.html')
+def homepageforpsy(request):
+    return render(request, 'ourapp/homepageforpsy.html')
+def homepage_parent(request):
+    return render(request, 'ourapp/homepage_parent.html')
+def homepage_teenager(request):
+    return render(request, 'ourapp/homepage_teenager.html')
+

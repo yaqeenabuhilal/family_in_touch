@@ -145,11 +145,11 @@ button{
         <div class="shape"></div>
         <div class="shape"></div>
     </div>
-    <form>
+            <form method="post" action="">
+
         <h3>Login Here teenager</h3>
 
         <label for="username">Username</label>
-        <form method="post" action="">
             {% csrf_token %}
         <input type="text" placeholder="Email or Phone" id="username" name="username">
 
@@ -163,7 +163,6 @@ button{
 
     {% endfor %}
 
-    </form>
 </body>
 </html>
 
