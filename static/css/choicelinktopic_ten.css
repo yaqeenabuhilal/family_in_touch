@@ -1,0 +1,444 @@
+
+@import url('https://fonts.googleapis.com/css?family=Exo:400,700');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+
+}
+
+body {
+    direction: rtl; /* מוסיף תמיכה בכיווניות ימין-לשמאל */
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background: rgba(157, 139, 119, 0.89);
+}
+.context {
+    width: 100%;
+    position: absolute;
+    top:50vh;
+
+}
+
+.context h1{
+    text-align: center;
+    color: #fff;
+    font-size: 50px;
+}
+
+
+.area{
+    background: rgba(199, 180, 157, 0.89);
+    background: -webkit-linear-gradient(to left, #e8d294, #e8d294);
+    width: 100%;
+    height:100vh;
+
+
+}
+.circles{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.circles li{
+    position: absolute;
+    display: block;
+    list-style: none;
+    width: 20px;
+    height: 20px;
+    background: rgba(255, 255, 255, 0.2);
+    animation: animate 25s linear infinite;
+    bottom: -150px;
+
+}
+
+.circles li:nth-child(1){
+    left: 25%;
+    width: 80px;
+    height: 80px;
+    animation-delay: 0s;
+}
+
+
+.circles li:nth-child(2){
+    left: 10%;
+    width: 20px;
+    height: 20px;
+    animation-delay: 2s;
+    animation-duration: 12s;
+}
+
+.circles li:nth-child(3){
+    left: 70%;
+    width: 20px;
+    height: 20px;
+    animation-delay: 4s;
+}
+
+.circles li:nth-child(4){
+    left: 40%;
+    width: 60px;
+    height: 60px;
+    animation-delay: 0s;
+    animation-duration: 18s;
+}
+
+.circles li:nth-child(5){
+    left: 65%;
+    width: 20px;
+    height: 20px;
+    animation-delay: 0s;
+}
+
+.circles li:nth-child(6){
+    left: 75%;
+    width: 110px;
+    height: 110px;
+    animation-delay: 3s;
+}
+
+.circles li:nth-child(7){
+    left: 35%;
+    width: 150px;
+    height: 150px;
+    animation-delay: 7s;
+}
+
+.circles li:nth-child(8){
+    left: 50%;
+    width: 25px;
+    height: 25px;
+    animation-delay: 15s;
+    animation-duration: 45s;
+}
+
+.circles li:nth-child(9){
+    left: 20%;
+    width: 15px;
+    height: 15px;
+    animation-delay: 2s;
+    animation-duration: 35s;
+}
+
+.circles li:nth-child(10){
+    left: 85%;
+    width: 150px;
+    height: 150px;
+    animation-delay: 0s;
+    animation-duration: 11s;
+}
+h1 {
+
+  position: relative;
+  padding: 0;
+  margin: 0;
+  font-family: "Raleway", sans-serif;
+  font-weight: 300;
+  font-size: 40px;
+  color: #080808;
+  -webkit-transition: all 0.4s ease 0s;
+  -o-transition: all 0.4s ease 0s;
+  transition: all 0.4s ease 0s;
+
+}
+
+h1 span {
+
+  display: block;
+  font-size: 0.5em;
+  line-height: 1.3;
+}
+h1 em {
+
+  font-style: normal;
+  font-weight: 600;
+}
+
+.three h1 {
+  margin-bottom: 100px;
+  font-size: 35px;
+  font-weight: 900;
+  letter-spacing: 0;
+  line-height: 1.5em;
+  padding-bottom: 15px;
+    margin-right: 400px;
+    position: relative;
+  top:120px;
+}
+.three h1:before {
+    margin-left: 400px;
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom:0 ;
+  height: 5px;
+width: 70px;
+    background-color: #111;
+}
+.three h1:after {
+    margin-left: 400px;
+
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 2px;
+  height: 1px;
+  width: 95%;
+  max-width: 255px;
+  background-color: #333;
+}
+.button-container {
+  display: flex;
+  gap: 2rem;
+
+}
+
+.button-wrapper {
+
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; /* Align text to the left within the container */
+  margin-bottom: 2rem; /* Add margin below each button wrapper */
+}
+
+button {
+      margin-left: 60px;
+
+   position: relative;
+  top:70px;
+  align-self: flex-start; /* Align the button to the left */
+  margin-top: 1rem; /* Add margin above the button */
+  background: #444;
+  color: #fff;
+  text-decoration: none;
+  text-transform: uppercase;
+  border: none;
+  letter-spacing: 0.1rem;
+  font-size: 1rem;
+  padding: 1rem 3rem;
+  transition: 0.2s;
+}
+
+button:hover {
+  letter-spacing: 0.2rem;
+  padding: 1.1rem 3.1rem;
+  background: var(--clr);
+  color: var(--clr);
+  animation: box 3s infinite;
+}
+
+button::before {
+  content: "";
+  position: absolute;
+  inset: 2px;
+  background: #272822;
+
+}
+
+button span {
+  position: relative;
+  z-index: 1;
+
+}
+
+button i {
+  position: absolute;
+  inset: 0;
+  display: block;
+
+}
+
+button i::before {
+  content: "";
+  position: absolute;
+  width: 10px;
+  height: 2px;
+  left: 80%;
+  top: -2px;
+  border: 2px solid var(--clr);
+  background: #272822;
+  transition: 0.2s;
+}
+
+button:hover i::before {
+  width: 15px;
+  left: 20%;
+  animation: move 3s infinite;
+}
+
+button i::after {
+
+  content: "";
+  position: absolute;
+  width: 10px;
+  height: 2px;
+  left: 20%;
+  bottom: -2px;
+  border: 2px solid var(--clr);
+  background: #272822;
+  transition: 0.2s;
+}
+
+button:hover i::after {
+  width: 15px;
+  left: 80%;
+  animation: move 3s infinite;
+}
+
+@keyframes move {
+  0% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(5px);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+@keyframes box {
+  0% {
+    box-shadow: #27272c;
+  }
+  50% {
+    box-shadow: 0 0 25px var(--clr);
+  }
+  100% {
+    box-shadow: #27272c;
+  }
+}
+
+h3 {
+    margin-left: 50px;
+   position: relative;
+  top:70px;
+    font-family: "Raleway", sans-serif;
+    font-weight: 900;
+   font-size:20px;
+  margin-bottom: 2rem;
+  color: rgba(0, 0, 0, 0.87);
+}
+.button-wrapper:nth-child(1) h3{
+    display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-bottom: 3rem;
+  margin-right: 200px;
+  white-space: nowrap;
+}
+.button-wrapper:nth-child(2) h3{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-bottom: 3rem;
+  margin-right: 140px;
+  white-space: nowrap;
+}
+.button-wrapper:nth-child(3) h3{
+   display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-bottom: 3rem;
+  margin-right: 90px;
+  white-space: nowrap;
+}
+p {
+  position: relative;
+  top:50px;
+  font-family: "Raleway", sans-serif;
+  font-size:15px;
+  margin-left: 90px;
+  color: rgba(0, 0, 0, 0.87);
+  line-height: 1.5; /* Set the line height to create space between lines */
+  text-align: left; /* Align the paragraph text to the left */
+  height: 5rem; /* Adjust the height to display three lines */
+}
+.button-wrapper:nth-child(1) p{
+  position: relative;
+  top:50px;
+  font-family: "Raleway", sans-serif;
+  font-size:15px;
+  margin-left: 57px;
+  color: rgba(0, 0, 0, 0.87);
+  line-height: 1.5; /* Set the line height to create space between lines */
+  text-align: left; /* Align the paragraph text to the left */
+  height: 5rem;
+}
+.button-wrapper:nth-child(2) p{
+  position: relative;
+  top:50px;
+  font-family: "Raleway", sans-serif;
+  font-size:15px;
+  margin-left: 55px;
+  color: rgba(0, 0, 0, 0.87);
+  line-height: 1.5; /* Set the line height to create space between lines */
+  text-align: left; /* Align the paragraph text to the left */
+  height: 5rem;
+}
+.button-wrapper:nth-child(3) p{
+ position: relative;
+  top:50px;
+  font-family: "Raleway", sans-serif;
+  font-size:15px;
+  margin-right: 40px;
+  color: rgba(0, 0, 0, 0.87);
+  line-height: 1.5; /* Set the line height to create space between lines */
+  text-align: left; /* Align the paragraph text to the left */
+  height: 5rem;
+}
+
+.button-wrapper:nth-child(1) a{
+      text-decoration: none; /* הסרת קו עליון מהקישור */
+
+    display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-bottom: 3rem;
+  margin-right: 160px;
+  white-space: nowrap;
+}
+.button-wrapper:nth-child(2) a{
+      text-decoration: none; /* הסרת קו עליון מהקישור */
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-bottom: 3rem;
+  margin-right: 135px;
+  white-space: nowrap;
+}
+.button-wrapper:nth-child(3) a{
+
+    text-decoration: none; /* הסרת קו עליון מהקישור */
+    display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-bottom: 3rem;
+  margin-right: 130px;
+  white-space: nowrap;
+}
+
+@keyframes animate {
+
+    0%{
+        transform: translateY(0) rotate(0deg);
+        opacity: 1;
+        border-radius: 0;
+    }
+
+    100%{
+        transform: translateY(-1000px) rotate(720deg);
+        opacity: 0;
+        border-radius: 50%;
+    }
+}
+

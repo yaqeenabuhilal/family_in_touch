@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+     <link rel="stylesheet" href="/static/css/choicelinktopic_psy.css">
+
+    <link href="https://fonts.googleapis.com/css?family=Raleway&display=swap" rel="stylesheet">
+
+</head>
+<body>
+
+ <div class="area" >
+     <ul class="circles">
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+<div class="nine">
+  <h1>Choose one topic to post links<span>For Parents</span></h1>
+    <p>Choose a topic from the various challenges of time management, behavioral and communication challenges, and publish links that will help parents deal with these challenges in an efficient and beneficial way</p>
+
+</div>  <div class="button-container">
+      <div class="button-wrapper"><h3>Time Management</h3><a href="{% url 'post_t_m_par' %}"><button style="--clr:rgba(211,187,158,0.85)"><span>Post Links</span><i></i></button></a></div>
+      <div class="button-wrapper"><h3>Behavioral Challenges</h3><p><a href="{% url 'post_b_ch_par' %}"><button style="--clr:rgba(211,187,158,0.85)"><span>Post Links</span><i></i></button></a></div>
+      <div class="button-wrapper"><h3>Communication Challenges</h3><a href="{% url 'post_c_ch_par' %}"><button style="--clr:rgba(211,187,158,0.85)"><span>Post Links</span><i></i></button></a></div>
+  </div>
+     </ul>
+ </div >
+</body>
+</html>
