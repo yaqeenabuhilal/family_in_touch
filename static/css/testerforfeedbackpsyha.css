@@ -1,7 +1,7 @@
 @import url(https://fonts.googleapis.com/css?family=Roboto:400,500,700,300,100);
 
 body {
-  background-color: rgb(115, 88, 88);
+  background-color: rgb(255, 255, 255);
   font-family: "Roboto", helvetica, arial, sans-serif;
   font-size: 16px;
   font-weight: 400;
@@ -17,7 +17,7 @@ div.table-title {
 }
 
 .table-title h3 {
-   color: #000000;
+   color: #ffffff;
    font-size: 30px;
    font-weight: 400;
    font-style:normal;
@@ -30,7 +30,7 @@ div.table-title {
 /*** Table Styles **/
 
 .table-fill {
-  background: #fed789;
+  background: white;
   border-radius:3px;
   border-collapse: collapse;
   height: 320px;
@@ -44,13 +44,13 @@ div.table-title {
 
 th {
   color: rgb(0, 0, 0);;
-  background: #000000;
-  border-bottom:4px solid #9ea7af;
-  border-right: 1px solid rgb(0, 0, 0);
+  background: #ecd4b6;
+  border-bottom:4px solid #000000;
+  border-right: 1px solid rgba(255, 207, 102, 0.75);
   font-size:23px;
   font-weight: 100;
   padding:24px;
-  text-align:left;
+  text-align:middle;
   text-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
   vertical-align:middle;
 }
@@ -74,7 +74,7 @@ tr {
 }
 
 tr:hover td {
-  background: rgb(255, 255, 255);
+  background: rgb(0, 0, 0);
   color:#FFFFFF;
   border-top: 1px solid #22262e;
 }
@@ -88,7 +88,7 @@ tr:last-child {
 }
 
 tr:nth-child(odd) td {
-  background: #000000;
+  background:#EBEBEB;
 }
 
 tr:nth-child(odd):hover td {
@@ -100,7 +100,7 @@ tr:last-child td:first-child {
 }
 
 tr:last-child td:last-child {
-  border-bottom-right-radius:3px;
+  border-bottom-left-radius:3px;
 }
 
 td {
@@ -111,26 +111,26 @@ td {
   font-weight:300;
   font-size:18px;
   text-shadow: -1px -1px 1px rgba(0, 0, 0, 0.1);
-  border-right: 1px solid #000000;
+  border-right: 1px solid #C1C3D1;
 }
 
 td:last-child {
   border-right: 0px;
 }
 
-th.text-middle{
-  text-align: middle;
+th.text-left {
+  text-align: left;
 }
 
 th.text-center {
   text-align: center;
 }
 
-th.text-middle {
-  text-align: right;
+th.text-right {
+  text-align: middle;
 }
 
-td.text-middle {
+td.text-left {
   text-align: middle;
 }
 
@@ -138,6 +138,6 @@ td.text-center {
   text-align: center;
 }
 
-td.text-middle {
-  text-align: center;
+td.text-right {
+  text-align: right;
 }

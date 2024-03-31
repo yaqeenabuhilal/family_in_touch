@@ -26,14 +26,14 @@ class ParentFeedback(models.Model):
     parent=models.CharField(max_length=200,null=True)
     text=models.CharField(max_length=200,null=True)
     sammary=models.CharField(max_length=200,null=True)
-    Parents=models.ForeignKey(Parents,null=True,on_delete=models.SET_NULL)
+    Parents=models.ForeignKey(User,null=True,on_delete=models.SET_NULL)
 
 
 class TeengerFeedback(models.Model):
     Teenger=models.CharField(max_length=200,null=True)
     text=models.CharField(max_length=200,null=True)
     sammary=models.CharField(max_length=200,null=True)
-    Teengers=models.ForeignKey(Teengers,null=True,on_delete=models.SET_NULL)
+    Teengers=models.ForeignKey(User,null=True,on_delete=models.SET_NULL)
 
 
 
