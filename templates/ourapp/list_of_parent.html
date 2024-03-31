@@ -1,0 +1,61 @@
+{% extends 'ourapp/main.html' %}
+
+{% block content %}
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static '/css/testerforfeedbackpsyha.css' %}">
+ <link rel="stylesheet" type="text/css" href="{% static '/css/design_list_parent.css' %}">
+
+<style>
+    /* CSS for the button */
+    .custom-button {
+        background-color: #007bff; /* Blue background color */
+        color: #fff; /* White text color */
+        padding: 12px 24px; /* Padding */
+        border: none; /* No border */
+        border-radius: 6px; /* Rounded corners */
+        cursor: pointer; /* Cursor style on hover */
+        font-size: 16px; /* Font size */
+        margin-top: 20px; /* Space above the button */
+        display: inline-block; /* Display as inline-block to adjust margin */
+    }
+
+    /* Hover effect */
+    .custom-button:hover {
+        background-color: #45343b; /* Darker blue background color */
+    }
+
+    /* Adjust space between table and button */
+    .button-container {
+        margin-top: 20px; /* Space between the table and button */
+    }
+
+
+
+
+
+</style>
+
+<h2>Parents List</h2>
+
+<table>
+    <thead>
+    <tr>
+        <th>Parent's Name</th>
+        <th>Parent's Username</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    {% for user in users_in_group %}
+    <tr>
+        <td>{{ user.first_name }}</td>
+        <td>{{ user.username }}</td>
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>
+
+<div class="button-container">
+    <button class="custom-button" type="button" onclick="window.location.href='/path/to/your/view/'">Click here to send a summary</button>
+</div>
+{% endblock content %}
