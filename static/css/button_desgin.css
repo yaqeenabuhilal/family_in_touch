@@ -1,0 +1,17 @@
+.custom-button {
+    width: 150px;
+    height: 30px;
+    background-color: #f5deb3;
+    color: white;
+    border: 2px solid #000000; /* Changed from border-block-color */
+    border-radius: 5px; /* Adding rounded corners */
+    text-decoration: none; /* Removing underline */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.custom-button:hover {
+    background-color: #ffcc80; /* Lighten the color on hover */
+    color: #333; /* Darken the text color for better contrast */
+}
