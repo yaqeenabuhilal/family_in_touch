@@ -2,13 +2,12 @@
 
 {% block content %}
 {% load static %}
-<link rel="stylesheet" type="text/css" href="{% static '/css/testerforfeedbackpsyha.css' %}">
- <link rel="stylesheet" type="text/css" href="{% static '/css/design_list_parent.css' %}">
-
+    <link rel="stylesheet" type="text/css" href="{% static '/css/testerforfeedbackpsyha.css' %}">
+     <link rel="stylesheet" type="text/css" href="{% static '/css/design_list_parent.css' %}">
 <style>
     /* CSS for the button */
     .custom-button {
-        background-color: #007bff; /* Blue background color */
+        background-color: rgba(255, 207, 102, 0.75); /* Blue background color */
         color: #fff; /* White text color */
         padding: 12px 24px; /* Padding */
         border: none; /* No border */
@@ -17,6 +16,7 @@
         font-size: 16px; /* Font size */
         margin-top: 20px; /* Space above the button */
         display: inline-block; /* Display as inline-block to adjust margin */
+
     }
 
     /* Hover effect */
@@ -35,27 +35,42 @@
 
 </style>
 
-<h2>Parents List</h2>
-
+<h2>parents List</h2>
 <table>
-    <thead>
+  <thead>
     <tr>
-        <th>Parent's Name</th>
-        <th>Parent's Username</th>
-    </tr>
-    </thead>
+      <th>parent's name list</th>
 
-    <tbody>
-    {% for user in users_in_group %}
-    <tr>
-        <td>{{ user.first_name }}</td>
-        <td>{{ user.username }}</td>
+      <th>parent's user name</th>
+
+       <th>date of meeting</th>
+
+      <th>clike here to send sammary</th>
+
     </tr>
-    {% endfor %}
-    </tbody>
+  </thead>
+
+  <tbody>
+   {% for h in users_in_group1 %}
+       <tr>
+       {% for k in feed1 %}
+           {% if h.username == k.parent %}
+               <td> {{ h.first_name}}</td>>
+               <td> {{ h.username }}</td>>
+               <td> {{ k.date }}</td>
+               <td> <a class="btn btn-outline-info custom-button" href="{% url 'send_sammary_to_parent' h.username k.date %}"> Click Here to Send Summary
+
+               </td>
+               </tr>
+           {% endif %}
+       {% endfor %}
+       </tr>
+
+
+  {% endfor %}
+  </tbody>
 </table>
 
-<div class="button-container">
-    <button class="custom-button" type="button" onclick="window.location.href='/path/to/your/view/'">Click here to send a summary</button>
-</div>
 {% endblock content %}
+
+

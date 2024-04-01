@@ -7,7 +7,7 @@
 <style>
     /* CSS for the button */
     .custom-button {
-        background-color: #007bff; /* Blue background color */
+        background-color: rgba(255, 207, 102, 0.75); /* Blue background color */
         color: #fff; /* White text color */
         padding: 12px 24px; /* Padding */
         border: none; /* No border */
@@ -16,6 +16,7 @@
         font-size: 16px; /* Font size */
         margin-top: 20px; /* Space above the button */
         display: inline-block; /* Display as inline-block to adjust margin */
+        
     }
 
     /* Hover effect */
@@ -34,29 +35,42 @@
 
 </style>
 
-<h2>Parents List</h2>
+<h2>teengers List</h2>
 <table>
   <thead>
     <tr>
       <th>teenger's name list</th>
 
       <th>teenger's user name</th>
+
+       <th>date of meeting</th>
+
+      <th>clike here to send sammary</th>
+
     </tr>
   </thead>
 
   <tbody>
    {% for i in users_in_group %}
        <tr>
-       <td> {{ i.first_name}}</td>>
-       <td> {{ i.username }}</td>>
+       {% for j in feed %}
+           {% if i.username == j.Teenger %}
+               <td> {{ i.first_name}}</td>>
+               <td> {{ i.username }}</td>>
+               <td> {{ j.date }}</td>
+               <td> <a class="btn btn-outline-info custom-button" href="{% url 'send_sammary_to_teen' i.username j.date %}"> Click Here to Send Summary
+
+               </td>
+               </tr>
+           {% endif %}
+       {% endfor %}
+       </tr>
 
 
   {% endfor %}
   </tbody>
 </table>
-    <div class="button-container">
-    <button class="custom-button" type="button" onclick="window.location.href='/path/to/your/view/'">Click here to send a summary</button>
-</div>
+
 {% endblock content %}
 
 

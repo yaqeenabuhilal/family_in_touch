@@ -6,6 +6,7 @@ from .models import *
 from .models import TeengerFeedback
 from .models import ParentFeedback
 
+
 class CreateUserForm(UserCreationForm):
     class Meta:
         model = User
@@ -15,12 +16,34 @@ class CreateUserForm(UserCreationForm):
 class TeengerFeedbackForm(ModelForm):
     class Meta:
         model = TeengerFeedback
-        fields =['Teenger','text','sammary']
-
-
+        fields =['Teenger','text','sammary','date']
 
 
 class ParentFeedbackForm(ModelForm):
     class Meta:
         model = ParentFeedback
-        fields =['parent','text','sammary']
+        fields =['parent','text','sammary','date']
+
+
+
+class CreateParentFeedbackForm(ModelForm):
+    class Meta:
+        model = ParentFeedback
+        fields = ['parent','text','date',]
+
+class CreatTeengerFeedbackForm(ModelForm):
+    class Meta:
+        model = TeengerFeedback
+        fields = ['Teenger','text','date',]
+
+
+
+class updateTeengersammaryForm(ModelForm):
+    class Meta:
+        model = TeengerFeedback
+        fields = ['sammary',]
+
+class updateparentsammaryForm(ModelForm):
+    class Meta:
+        model = ParentFeedback
+        fields = ['sammary']

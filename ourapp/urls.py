@@ -1,6 +1,7 @@
 from django.urls import path
 from . import views
 
+
 urlpatterns = [
     path('', views.home, name="dashbord"),
     path('feedback/', views.feedback),
@@ -24,8 +25,8 @@ urlpatterns = [
     path('sammaryforteenger/<str:teenger_id>/', views.sammaryforteenger, name='sammaryforteenger'),
     path('feedback_teenger/', views.add_teenger_feedback, name='feedback_teenger'),
     path('feedback_parent/', views.add_parent_feedback, name='feedback_parent'),
-    path('send_sammary_to_parent/', views.add_send_sammary_to_parent, name='send_sammary_to_parent'),
-    path('send_sammary_to_teen/', views.add_send_sammary_to_teen, name='send_sammary_to_teen'),
+    path('send_sammary_to_parent/<str:username>/<str:date>/', views.add_send_sammary_to_parent, name='send_sammary_to_parent'),
+    path('send_sammary_to_teen/<str:username>/<str:date>/', views.add_send_sammary_to_teen, name='send_sammary_to_teen'),
     path('list_of_teenger/', views.view_list_of_teenger, name='list_of_teenger'),
     path('list_of_parent/', views.view_list_of_parent, name='list_of_parent'),
 

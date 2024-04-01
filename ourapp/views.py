@@ -10,7 +10,13 @@ from .models import *
 from itertools import count, repeat,chain
 from .forms import CreateUserForm
 from .forms import TeengerFeedbackForm
-from .forms import ParentFeedbackForm
+from .forms import ParentFeedbackForm,updateTeengersammaryForm,updateparentsammaryForm
+from .forms import CreateParentFeedbackForm
+from .forms import CreatTeengerFeedbackForm
+from datetime import datetime
+
+
+
 
 def home(request):
     return render(request,'ourapp/dashbord.html')
@@ -161,36 +167,51 @@ def sammaryforteenger(request, teenger_id):
 
 
 def add_teenger_feedback(request):
-    form=TeengerFeedbackForm()
+    form = CreatTeengerFeedbackForm()
     if request.method == 'POST':
-        user = request.POST.get('Teenger')
-        instance = User.objects.get(username=user)
-        if instance:
-            form = TeengerFeedbackForm(request.POST)
+        date = request.POST.get('date')
+        instance = TeengerFeedback.objects.filter(date=date)
+        if not instance:
+            form = CreatTeengerFeedbackForm(request.POST)
             if form.is_valid():
-                form.instance.Teengers = instance
                 form.save()
                 return redirect('feedback_psy_teenger')
+            else:
+                messages.info(request, 'the info is not valid')
+        else:
+            messages.info(request, 'this product already exsited')
     context = {'form': form}
     return render(request, 'ourapp/feedback_teenger.html', context)
 
 
 
 
+
+
+
 def add_parent_feedback(request):
-    form=ParentFeedbackForm()
+    form = CreateParentFeedbackForm()
     if request.method == 'POST':
-        user = request.POST.get('parent')
-        instance = User.objects.get(username=user)
-        if instance:
-            form = ParentFeedbackForm(request.POST)
+        date = request.POST.get('date')
+        instance = ParentFeedback.objects.filter(date=date)
+        if not instance:
+            form = CreateParentFeedbackForm(request.POST)
             if form.is_valid():
-                form.instance.Parents = instance
                 form.save()
                 return redirect('feedback_psy_parent')
-
+            else:
+                messages.info(request, 'the info is not valid')
+        else:
+            messages.info(request, 'this product already exsited')
     context = {'form': form}
     return render(request, 'ourapp/feedback_parent.html', context)
+
+
+
+
+
+
+
 
 
 def send_sammary_to_parent(request):
@@ -203,18 +224,21 @@ def send_sammary_to_teen(request):
 
 
 
-def add_send_sammary_to_parent(request):
-    form = ParentFeedbackForm()
-    if request.method == 'POST':
-        user = request.POST.get('parent')
-        instance = User.objects.get(username=user)
-        if instance:
-            form = ParentFeedbackForm(request.POST)
-            if form.is_valid():
-                form.instance.Parents = instance
-                form.save()
-                return redirect('sammaryforparent',user)
 
+
+def add_send_sammary_to_parent(request,username,date):
+    date_object1 = datetime.strptime(date, '%Y-%m-%d').date()
+
+    feed1=ParentFeedback.objects.filter(date=date_object1).get(parent=username)
+    form = updateparentsammaryForm(instance=feed1)
+    if request.method == 'POST':
+
+        # isnstance=TeengerFeedback.objects.get(date=date).get(Teenger=Teenger)
+        if feed1:
+            form = updateparentsammaryForm(request.POST,instance=feed1)
+            if form.is_valid():
+                form.save()
+                return redirect('sammaryforparent',username)  # Redirect to a success page
     context = {'form': form}
     return render(request, 'ourapp/send_sammary_to_parent.html', context)
 
@@ -223,21 +247,30 @@ def add_send_sammary_to_parent(request):
 
 
 
-def add_send_sammary_to_teen(request):
 
-    form = TeengerFeedbackForm()
+
+
+
+
+
+def add_send_sammary_to_teen(request,username,date):
+    date_object = datetime.strptime(date, '%Y-%m-%d').date()
+
+    feed=TeengerFeedback.objects.filter(date=date_object).get(Teenger=username)
+    form = updateTeengersammaryForm(instance=feed)
     if request.method == 'POST':
-        user = request.POST.get('Teenger')
-        instance = User.objects.get(username=user)
-        if instance:
-            form = TeengerFeedbackForm(request.POST)
-            if form.is_valid():
-                form.instance.Teengers = instance
-                form.save()
-                return redirect('sammaryforteenger')
 
+        # isnstance=TeengerFeedback.objects.get(date=date).get(Teenger=Teenger)
+        if feed:
+            form = updateTeengersammaryForm(request.POST,instance=feed)
+            if form.is_valid():
+                form.save()
+                return redirect('sammaryforteenger',username)  # Redirect to a success page
     context = {'form': form}
     return render(request, 'ourapp/send_sammary_to_teen.html', context)
+
+
+
 
 
 def list_of_teenger(request):
@@ -246,18 +279,18 @@ def list_of_teenger(request):
 
 
 def view_list_of_teenger(request):
-
     users_in_group = Group.objects.get(name='Teengers').user_set.all()
     # Teengers =Teengers.objects.all()
-    teen = {'users_in_group': users_in_group}
+    feed=TeengerFeedback.objects.all()
+    teen = {'users_in_group': users_in_group,'feed':feed}
     return render(request, 'ourapp/list_of_teenger.html', teen)
 
 
 
 
 def view_list_of_parent(request):
-
-    users_in_group = Group.objects.get(name='Parents').user_set.all()
+    users_in_group1 = Group.objects.get(name='Parents').user_set.all()
     # Teengers =Teengers.objects.all()
-    parent = {'users_in_group': users_in_group}
+    feed1=ParentFeedback.objects.all()
+    parent = {'users_in_group1': users_in_group1,'feed1':feed1}
     return render(request, 'ourapp/list_of_parent.html', parent)

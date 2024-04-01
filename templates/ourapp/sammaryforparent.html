@@ -7,7 +7,7 @@
 <table>
   <thead>
     <tr>
-      <th>parents's massge</th>
+      <th>date of the  massge</th>
       <th>psychotherapist's Summary</th>
     </tr>
   </thead>
@@ -15,7 +15,7 @@
     {% for feedback in parent_feedback %}
     <tr>
 
-      <td><strong></strong> {{ feedback.text }}</td>
+      <td><strong></strong> {{ feedback.date }}</td>
       <td><strong></strong> {{ feedback.sammary }}</td>
     </tr>
     {% empty %}

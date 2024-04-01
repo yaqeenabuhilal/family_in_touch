@@ -54,25 +54,17 @@
 <div class="box">
 <h3 class="heading">Send us a message</h3>
 <form class="mb-5" method="post" id="contactForm" name="contactForm">
-<div class="row">
-    <div class="col-md-12 form-group">
-        <label for="username">{{ form.parent.label }}</label>
-        {% csrf_token %}
-        {{ form.parent }}
-    </div>
-</div>
-<div class="row">
-    <div class="col-md-12 form-group">
-        <label for="email">{{ form.text.label }}</label>
-        {{ form.text }}
-    </div>
-</div>
+
 <div class="row mb-3">
-    <div class="col-md-12 form-group">
-        <label for="message">{{ form.sammary.label }}</label>
-        {{ form.sammary }}
+    < class="col-md-12 form-group">
+        <label for="message">
+            {{ form.sammary.label }}</label>
+                {% csrf_token %}
+
+              {{ form.sammary }}
 
    <input type="submit" name="submit">
+</div>
 </form>
 
 <span class="submitting"></span>
