@@ -1,0 +1,76 @@
+{% extends 'ourapp/main.html' %}
+
+{% block content %}
+{% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static '/css/testerforfeedbackpsyha.css' %}">
+     <link rel="stylesheet" type="text/css" href="{% static '/css/design_list_parent.css' %}">
+<style>
+    /* CSS for the button */
+    .custom-button {
+        background-color: rgba(255, 207, 102, 0.75); /* Blue background color */
+        color: #fff; /* White text color */
+        padding: 12px 24px; /* Padding */
+        border: none; /* No border */
+        border-radius: 6px; /* Rounded corners */
+        cursor: pointer; /* Cursor style on hover */
+        font-size: 16px; /* Font size */
+        margin-top: 20px; /* Space above the button */
+        display: inline-block; /* Display as inline-block to adjust margin */
+
+    }
+
+    /* Hover effect */
+    .custom-button:hover {
+        background-color: #45343b; /* Darker blue background color */
+    }
+
+    /* Adjust space between table and button */
+    .button-container {
+        margin-top: 20px; /* Space between the table and button */
+    }
+
+
+
+
+
+</style>
+
+<h2>parents List</h2>
+<table>
+  <thead>
+    <tr>
+      <th>parent's name list</th>
+
+      <th>parent's user name</th>
+
+       <th>date of meeting</th>
+
+      <th>clike here to send sammary</th>
+
+    </tr>
+  </thead>
+
+  <tbody>
+   {% for h in users_in_group1 %}
+       <tr>
+       {% for k in feed1 %}
+           {% if h.username == k.parent %}
+               <td> {{ h.first_name}}</td>>
+               <td> {{ h.username }}</td>>
+               <td> {{ k.date }}</td>
+               <td> <a class="btn btn-outline-info custom-button" href="{% url 'send_sammary_to_parent' h.username k.date %}"> Click Here to Send Summary
+
+               </td>
+               </tr>
+           {% endif %}
+       {% endfor %}
+       </tr>
+
+
+  {% endfor %}
+  </tbody>
+</table>
+
+{% endblock content %}
+
+

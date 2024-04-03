@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+     <link rel="stylesheet" href="/static/css/choicelinktopic_par.css">
+        <link href="https://fonts.googleapis.com/css?family=Raleway&display=swap" rel="stylesheet">
+
+</head>
+<body>
+<div class="area" >
+     <ul class="circles">
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+           <div class="three"><h1>For Parents: Choose one topic to show links</h1></div>
+  <div class="button-container">
+      <div class="button-wrapper">
+          <h3>Time Management</h3><p> Here you can find resources and guides on time management strategies and techniques to<br>help you effectively manage your time<br><br></p><a href="{% url 'time_management_par' %}"><button style="--clr:rgba(211,187,158,0.89)"><span>Show Links</span><i></i></button></a>
+      </div>
+    <div class="button-wrapper">
+        <h3>Behavioral Challenges</h3><p>Here you can see resources and strategies for addressing behavioral challenges and developing effective coping mechanisms<br><br><br></p><a href="{% url 'behavioral_challenges_par' %}"><button style="--clr:rgba(211,187,158,0.89)"><span>Show Links</span><i></i></button style="--clr:#c7894f"></a>
+    </div>
+    <div class="button-wrapper">
+        <h3>Communication Challenges</h3><p>Here you can find resources and strategies for navigating various communication challenges and fostering positive changes<br><br><br></p><a href="{% url 'communication_challenges_par' %}"><button style="--clr:rgba(211,187,158,0.89)"><span>Show Links</span><i></i></button></a>
+    </div>
+  </div>
+     </ul>
+</div>
+</body>
+</html>

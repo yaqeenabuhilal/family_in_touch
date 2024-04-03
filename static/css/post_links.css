@@ -1,0 +1,124 @@
+@import url('https://fonts.googleapis.com/css?family=Noto+Sans:400,400i,700,700i&subset=greek-ext');
+
+body {
+  font-family: "Raleway", sans-serif;
+  background: #d2b48c; /* Pleasant background color */
+  color: rgba(0, 0, 0, 0.87);     background-origin: content-box;
+    background-size: cover;
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+}
+.nine h1 {
+  text-align:center;
+    text-transform:uppercase;
+    color:#222;
+    letter-spacing:1px;
+  font-family:"Playfair Display", serif; font-weight:400;
+    font-size: 28px;
+    margin-right: 5px;
+}
+.nine h1 span {
+  margin-top: 5px;
+    font-size:15px; color:#444; word-spacing:1px;
+    letter-spacing:2px;
+    text-transform: uppercase;
+    font-family:"Raleway", sans-serif;
+    font-weight:500;
+
+    display: grid;
+    grid-template-columns: 1fr max-content 1fr;
+    grid-template-rows: 27px 0;
+    grid-gap: 20px;
+    align-items: center;
+}
+
+.nine h1 span:after,.nine h1 span:before {
+    content: " ";
+    display: block;
+    border-bottom: 1px solid #ccc;
+    border-top: 1px solid #ccc;
+    height: 5px;
+  background-color:#f8f8f8;
+}
+
+.text-center {
+    font-family: "Raleway", sans-serif;
+    color: #fff;
+    text-transform: uppercase;
+    font-size: 23px;
+    margin: -50px 0 80px 0;
+    display: block;
+    text-align: center;
+}
+
+
+.box {
+      background-color: rgba(211, 187, 158, 0.89); /* Background color for list items */
+
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    border-radius:35px;
+    padding: 20px 90px;
+}
+
+.input-container {
+
+    position: relative;
+    margin-bottom: 25px;
+}
+
+.input-container label {
+        font-family: "Raleway", sans-serif;
+
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    font-size: 16px;
+    color: rgba(0, 0, 0, 0.87);
+    transition: all 0.5s ease-in-out;
+}
+
+.input-container input {
+    border: 0;
+    border-bottom: 1px solid #555;
+    background: transparent;
+    width: 100%;
+    padding: 8px 0 5px 0;
+    font-size: 22px;
+    color: rgba(0, 0, 0, 0.87);
+}
+
+.input-container input:focus {
+    border: none;
+    outline: none;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.87);
+}
+
+.btn {
+    font-family: "Raleway", sans-serif;
+    color: #fff;
+    background-color: rgba(0, 0, 0, 0.87);
+    outline: none;
+    border: 0;
+    padding: 10px 20px; /* Adjust padding as needed */
+    text-transform: uppercase;
+border-radius: 6px;
+    cursor: pointer;
+    position: relative;
+    transition: background-color 0.3s ease; /* Smooth transition for background color */
+    margin-top: 30px;
+}
+
+.btn:hover {
+    background-color: rgba(0, 0, 0, 0.7); /* Darker background color on hover */
+}
+
+
+.input-container input:focus ~ label,
+.input-container input:valid ~ label {
+    top: -12px;
+    font-size: 12px;
+}

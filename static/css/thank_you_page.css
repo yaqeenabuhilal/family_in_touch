@@ -1,0 +1,48 @@
+/* styles.css */
+@import url(//cdnjs.cloudflare.com/ajax/libs/normalize/3.0.1/normalize.min.css);
+@import url(//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css);
+
+/* Custom styles */
+body {
+  background: #d2b48c; /* Pleasant background color */
+  font-family: "Raleway", sans-serif;
+  color: rgba(0, 0, 0, 0.87); /* Pleasant text color */
+}
+
+/* styles.css */
+.site-header__title {
+    margin-top: 200px;
+    margin-left: 450px; /* כאן נכניס את הערך שאתה רוצה */
+    font-size: 90px;
+}
+
+
+.main-content__body {
+    color: rgba(0, 0, 0, 0.87); /* Dark gray (for example) */
+}
+/* styles.css */
+/* Add this rule to shift the content to the right */
+.main-content {
+    margin-left: 300px; /* This will push the content to the right */
+    max-width: 800px; /* Adjust the maximum width as needed */
+}
+
+/* styles.css */
+.main-content__checkmark {
+    position: relative; /* הגדרת הסימן להיות יחסית למיקום שלו */
+    left: 350px; /* כך תזיזי את הסימן 10 פיקסלים לשמאל */
+    top: -30px; /* כך תזיזי את הסימן 5 פיקסלים למעלה */
+    font-size: 90px;
+    color: rgba(94, 69, 47, 0.89);
+}
+.main-content__body {
+        position: relative; /* הגדרת הסימן להיות יחסית למיקום שלו */
+
+    font-size: 20px; /* גודל הטקסט 18 פיקסלים */
+    left: 30px;
+}
+.site-footer{
+    position: relative; /* הגדרת הסימן להיות יחסית למיקום שלו */
+    left: 550px;
+    top: 60px;
+}

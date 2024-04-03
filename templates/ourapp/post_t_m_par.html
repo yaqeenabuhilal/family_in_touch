@@ -1,0 +1,31 @@
+<!-- post_t_m_par.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link href="https://fonts.googleapis.com/css?family=Raleway&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Posting Links</title>
+    <link rel="stylesheet" href="/static/css/post_links.css">
+</head>
+<body>
+    <div class="box">
+        <div class="nine">
+            <h1>Post links about Time Management<span>For Parents</span></h1>
+        </div>
+        <form method="POST" action="{% url 'post_t_m_par' %}">
+            {% csrf_token %}
+            <div class="input-container">
+                <input type="text" name="link">
+                <label>Post a link</label>
+            </div>
+            <div class="input-container">
+                <input type="text" name="description">
+                <label>Description</label>
+            </div>
+            <button type="submit" class="btn">Submit</button>
+        </form>
+    </div>
+</body>
+</html>
+

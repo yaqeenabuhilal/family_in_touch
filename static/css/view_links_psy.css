@@ -1,0 +1,71 @@
+/* Add this CSS to your stylesheet (e.g., linksPages.css) */
+
+body {
+  background: #d2b48c; /* Pleasant background color */
+  font-family: "Raleway", sans-serif;
+  color: rgba(0, 0, 0, 0.87); /* Pleasant text color */}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+h1 {
+    color: #333; /* צבע אפור כהה לכותרות */
+    text-align: center;
+    font-weight: lighter; /* Decrease thickness of the text */
+    font-size: 36px; /* גודל הכותרת */
+}
+
+
+ul {
+    list-style-type: none; /* Remove default list styles */
+    padding: 0;
+}
+
+li {
+  margin-bottom: 10px; /* Spacing between list items */
+  background-color: rgba(211, 187, 158, 0.89); /* Background color for list items */
+  padding: 20px 30px; /* Padding for content inside list items */
+  margin-right: 200px; /* Right margin */
+  margin-left: 200px; /* Left margin */
+  border-radius: 35px; /* Border radius */
+  margin-top: 30px; /* Move the list item 30px downwards */
+}
+li p {
+    width: 80%; /* Adjust the width as needed */
+    margin: 0 auto; /* Center the content horizontally */
+}
+
+/* Emphasize the words "Domain," "Description," and "Link" */
+li p span {
+    font-weight: bold;
+    color: rgba(0, 0, 0, 0.87); /* Adjust the color as needed */
+}
+p {
+    margin: 0; /* Remove default paragraph margins */
+}
+
+a {
+    color: #007bff; /* Blue color for links */
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline; /* Underline links on hover */
+}
+
+button {
+    background-color: #c82333; /* Red color for delete button */
+    color: #fff;
+    border: none;
+    padding: 9px 20px;
+    border-radius: 6px;
+    cursor: pointer;
+    margin-left: 100px;
+}
+
+button:hover {
+    background-color: #c82333; /* Darker red color on hover */
+}
