@@ -3,21 +3,26 @@ from django.http import HttpResponse
 from django.forms import inlineformset_factory
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib import messages
-from django.contrib.auth import authenticate, login,logout
+from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import Group
 from .models import *
-from itertools import count, repeat,chain
+from itertools import count, repeat, chain
 from .forms import CreateUserForm
 
 
 def home(request):
-    return render(request,'ourapp/dashbord.html')
+    return render(request, 'ourapp/dashbord.html')
+
 
 def feedback(request):
-    return render(request,'ourapp/feedback.html')
+    return render(request, 'ourapp/feedback.html')
+
+
 def link(request):
-    return render(request,'ourapp/link.html')
+    return render(request, 'ourapp/link.html')
+
+
 def loginTeenager(request):
     if request.method == 'POST':
         username = request.POST.get('username')
@@ -33,12 +38,16 @@ def loginTeenager(request):
         else:
             messages.info(request, 'username OR password incorrert')
     context = {}
-    return  render(request,'ourapp/login.html',context)
+    return render(request, 'ourapp/login.html', context)
+
 
 def test(request):
-    return render(request,'ourapp/test.html')
+    return render(request, 'ourapp/test.html')
+
+
 def aaa(request):
-    return render(request,'ourapp/login.html')
+    return render(request, 'ourapp/login.html')
+
 
 def singupteenager(request):
     form = CreateUserForm()
@@ -53,6 +62,8 @@ def singupteenager(request):
             return redirect('loginTeenager')
     context = {'form': form}
     return render(request, 'ourapp/singupteenager.html', context)
+
+
 def loginParent(request):
     if request.method == 'POST':
         username = request.POST.get('username')
@@ -68,7 +79,9 @@ def loginParent(request):
         else:
             messages.info(request, 'username OR password incorrert')
     context = {}
-    return render(request,'ourapp/log _in _parent.html',context)
+    return render(request, 'ourapp/log _in _parent.html', context)
+
+
 def loginpsychologist(request):
     if request.method == 'POST':
         username = request.POST.get('username')
@@ -83,9 +96,10 @@ def loginpsychologist(request):
             else:
                 messages.info(request, 'username OR password incorrert')
         else:
-                messages.info(request, 'username OR password incorrert')
+            messages.info(request, 'username OR password incorrert')
     context = {}
     return render(request, 'ourapp/loginpsychologist.html', context)
+
 
 def sign_up_parent(request):
     form = CreateUserForm()
@@ -101,12 +115,40 @@ def sign_up_parent(request):
     context = {'form': form}
     return render(request, 'ourapp/sign_up_parent.html', context)
 
+
 def navbarforpsy(request):
     return render(request, 'ourapp/navbarforpsy.html')
+
+
 def homepageforpsy(request):
     return render(request, 'ourapp/homepageforpsy.html')
+
+
 def homepage_parent(request):
     return render(request, 'ourapp/homepage_parent.html')
+
+
 def homepage_teenager(request):
     return render(request, 'ourapp/homepage_teenager.html')
+
+
+def official_homepage(request):
+    return render(request, 'ourapp/official_homepage.html')
+
+
+def About(request):
+    return render(request, 'ourapp/About.html')
+
+
+def contact_teens(request):
+    return render(request, 'ourapp/contact_teens.html')
+
+
+def contact_parent(request):
+    return render(request, 'ourapp/contact_parent.html')
+
+
+def logout_view(request):
+    logout(request)
+    return redirect('official_homepage')
 

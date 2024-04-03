@@ -1,16 +1,19 @@
 {% load static %}
-    <link rel="stylesheet" type="text/css" href="{% static '/css/test.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static '/css/Nav.css' %}">
 <ul class="menu">
-  <li><a href="{% url 'homepageforpsy' %}">MyHomePage</a></li>
-  <li><a href="#">Profile</a></li>
-  <li><a href="#" class="active">Courses</a></li>
-  <li>
-      <div class="dropdown">
-      <span> Feedbacks</span>
-          <div class="dropdown-content">
-           <a href="#">Resevie Feedback</a>
-           <a href="#">Send Feedback</a>
-              </div>
+    <li><a href="{% url 'homepage_teenager' %}">MyHomePage</a></li>
+    <li><a href="{% url 'contact_teens' %}">Contact us</a></li>
+    <li><a href="#" class="active">Courses</a></li>
+    <li>
+        <div class="dropdown">
+            <span>Feedbacks</span>
+            <div class="dropdown-content">
+                <a href="#">Receive Feedback</a>
+                <a href="#">Send Feedback</a>
+            </div>
         </div>
-  </li>
+    </li>
+        <li>
+            <a  href="{% url 'logout' %}">logout</a>
+        </li>
 </ul>

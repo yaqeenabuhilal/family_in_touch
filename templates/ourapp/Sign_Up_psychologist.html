@@ -1,4 +1,5 @@
 {% extends 'ourapp/main.html' %}
+
 {% block content %}
 {% load static %}
 
@@ -147,7 +148,7 @@ button{
 {#    <form>#}
 
         <form method="post" action="">
-            <h3>sing up Here for parent</h3>
+            <h3>sing up Here</h3>
         <label for="first_name">first name</label>
             {% csrf_token %}
          {{ form.first_name }}
@@ -164,7 +165,7 @@ button{
         {{ form.password2 }}
         <input type="submit"  value="Register Account">
 {{ form.errors }}
-    Already have an account? <a href="{% url 'loginParent' %}" class="ml-2">Login</a>
+    Already have an account? <a href="{% url 'signupPsychologisto' %}" class="ml-2">Login</a>
         </form>
 
 
@@ -173,3 +174,4 @@ button{
 </html>
 
 {% endblock content %}
+

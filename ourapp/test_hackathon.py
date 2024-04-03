@@ -19,7 +19,7 @@ class TestLoginParents(TestCase):
     def test_login_unsuccessful(self):
         # בדיקה כאשר שם המשתמש או הסיסמה אינם נכונים
         response = self.client.post(self.url, {'username': 'incorrect_username', 'password': 'incorrect_password'})
-        self.assertContains(response, 'username OR password incorrert')
+        self.assertContains(response, 'username OR password incorrect')
 
 class TestSignUpParents(TestCase):
     def setUp(self):

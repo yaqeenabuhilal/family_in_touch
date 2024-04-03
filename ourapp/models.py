@@ -23,9 +23,9 @@ class Lecture(models.Model):
     forWhom=models.CharField(max_length=200,null=False)
     Description=models.CharField(max_length=200,null=False)
 class ParentFeedback(models.Model):
-    parent=models.CharField(max_length=200,null=True)
-    text=models.CharField(max_length=200,null=True)
+    parent = models.CharField(max_length=200,null=True)
+    text = models.CharField(max_length=200,null=True)
 class TeengerFeedback(models.Model):
-    Teenger=models.CharField(max_length=200,null=True)
-    text=models.CharField(max_length=200,null=True)
+    Teenager = models.CharField(max_length=200,null=True)
+    text = models.CharField(max_length=200,null=True)
 
