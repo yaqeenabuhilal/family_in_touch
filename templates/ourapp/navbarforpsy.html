@@ -1,5 +1,5 @@
 {% load static %}
-    <link rel="stylesheet" type="text/css" href="{% static '/css/test.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static '/css/navlast.css' %}">
 <ul class="menu">
   <li><a href="{% url 'homepageforpsy' %}">MyHomePage</a></li>
   <li><a href="{% url 'profile' %}">profile</a></li>
@@ -19,7 +19,8 @@
     <div class="dropdown">
   <span>Feedbacks</span>
        <div class="dropdown-content">
-           <a href="{% url 'summary_psy' %}">Meeting Summary</a>
+           <a href="{% url 'feedback_psy_teenger' %}">view Teenager's Summary</a>
+           <a href="{% url 'feedback_psy_parent' %}">view Parent's Summary</a>
            <a href="{% url 'list_of_parent' %}">parents's list feedback</a>
            <a href="{% url 'list_of_teenger' %}">teenagers's list feedback</a>
 
