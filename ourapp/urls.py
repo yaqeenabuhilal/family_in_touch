@@ -7,7 +7,7 @@ from django.contrib.auth import views as auth_views
 
 
 urlpatterns = [
-    path('', views.home, name="dashbord"),
+    path('', views.official_homepage, name="official_homepage"),
     path('feedback/', views.feedback),
     path('link/', views.link),
     path('loginTeenager/', views.loginTeenager, name='loginTeenager'),
@@ -70,7 +70,12 @@ urlpatterns = [
     path('view_links_psy_ten/', views.view_links_psy_ten, name='view_links_psy_ten'),
     path('delete_link_psy_ten/<int:link_id>/', views.delete_link_psy_ten, name='delete_link_psy_ten'),
 
-    path('thank_you_page/', views.thank_you_page, name='thank_you_page')
+    path('thank_you_page/', views.thank_you_page, name='thank_you_page'),
+    path('error_parent/', views.error_parent, name='error_parent'),
+    path('error_teenger/', views.error_teenger, name='error_teenger'),
+
+
+
 ]
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
