@@ -29,5 +29,9 @@ urlpatterns = [
     path('send_sammary_to_teen/<str:username>/<str:date>/', views.add_send_sammary_to_teen, name='send_sammary_to_teen'),
     path('list_of_teenger/', views.view_list_of_teenger, name='list_of_teenger'),
     path('list_of_parent/', views.view_list_of_parent, name='list_of_parent'),
+    path('navbarforpsy/', views.navbarforpsy, name='navbarforpsy'),
+    path('loginpsychologist/homepageforpsy', views.homepageforpsy, name='homepageforpsy'),
+    path('homepage_parent/', views.homepage_parent, name='homepage_parent'),
+    path('homepage_teenager/', views.homepage_teenager, name='homepage_teenager'),
 
 ]

@@ -1,0 +1,16 @@
+{% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static '/css/test.css' %}">
+<ul class="menu">
+  <li><a href="{% url 'homepageforpsy' %}">MyHomePage</a></li>
+  <li><a href="#">Profile</a></li>
+  <li><a href="#" class="active">Courses</a></li>
+    <li>
+      <div class="dropdown">
+      <span> Feedbacks</span>
+          <div class="dropdown-content">
+           <a href="#">Resevie Feedback</a>
+           <a href="#">Send Feedback</a>
+              </div>
+        </div>
+  </li>
+</ul>
