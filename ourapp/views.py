@@ -563,3 +563,8 @@ def logout_view(request):
     logout(request)
     return redirect('official_homepage')
 
+
+def error_parent(request):
+    return render(request, 'ourapp/error_parent.html')
+def error_teenger(request):
+    return render(request, 'ourapp/error_teenger.html')
