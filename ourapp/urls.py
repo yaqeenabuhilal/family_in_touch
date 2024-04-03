@@ -36,6 +36,7 @@ urlpatterns = [
     path('send_sammary_to_teen/<str:username>/<str:date>/', views.add_send_sammary_to_teen, name='send_sammary_to_teen'),
     path('list_of_teenger/', views.view_list_of_teenger, name='list_of_teenger'),
     path('list_of_parent/', views.view_list_of_parent, name='list_of_parent'),
+    path('navbarforpsy/', views.navbarforpsy, name='navbarforpsy'),
     path('official_homepage/', views.official_homepage, name='official_homepage'),
     path('About/', views.About, name='About'),
     path('contact_parent/', views.contact_parent, name='contact_parent'),
@@ -79,4 +80,3 @@ urlpatterns = [
 ]
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
-
