@@ -57,12 +57,12 @@ body{
     bottom: -80px;
 }
 form{
-    height: 860px;
+    height: 520px;
     width: 400px;
     background-color: rgba(255,255,255,0.13);
     position: absolute;
     transform: translate(-50%,-50%);
-    top: 75%;
+    top: 50%;
     left: 50%;
     border-radius: 10px;
     backdrop-filter: blur(10px);
@@ -145,30 +145,24 @@ button{
         <div class="shape"></div>
         <div class="shape"></div>
     </div>
-{#    <form>#}
+            <form method="post" action="">
 
-    <form method="post" action="">
-        <h3>sing up Here</h3>
-        <label for="first_name">first name</label>
-        {% csrf_token %}
-        {{ form.first_name }}
-        <label for="last_name">last name</label>
-        {{ form.last_name }}
-        <label for="email">email</label>
-        {{ form.email }}
-        <label for="username">username</label>
-        {{ form.username }}
-        <label for="password">password1</label>
-        {{ form.password1 }}
-        <label for="repassword">repassword</label>
-        {{ form.password2 }}
-        <input type="submit" value="Register Account">
-        {{ form.errors }}
-        Already have an account? <a href="{% url 'loginTeenager' %}" class="ml-2">Login</a>
-    </form>
+        <h3>Login Here psycholog</h3>
 
+        <label for="username">Username</label>
+            {% csrf_token %}
+        <input type="text" placeholder="Email or Phone" id="username" name="username">
 
-{#   </form>#}
+        <label for="password">Password</label>
+        <input type="password" placeholder="Password" id="password" name="password">
+
+        <button>Log In</button>
+        </form>
+        {% for message in messages %}
+        <p id="messages">{{ message }}</p>
+
+    {% endfor %}
+
 </body>
 </html>
 

@@ -28,4 +28,10 @@ class ParentFeedback(models.Model):
 class TeengerFeedback(models.Model):
     Teenger=models.CharField(max_length=200,null=True)
     text=models.CharField(max_length=200,null=True)
+class profile(models.Model):
+    user=models.OneToOneField(User,null=True,on_delete=models.CASCADE)
+    image=models.ImageField(default='default.jpg',upload_to='profile_pics')
+
+    def __str__(self):
+        return f'{self.user.username}profile'
 

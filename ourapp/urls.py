@@ -1,6 +1,7 @@
 from django.urls import path
 from . import views
-
+from django.conf import settings
+from django.conf.urls.static import static
 urlpatterns = [
     path('', views.home, name="dashbord"),
     path('feedback/', views.feedback),
@@ -11,12 +12,14 @@ urlpatterns = [
     path('singupteenger/', views.singupteenager, name='singupteenger'),
 
     path('loginParent/', views.loginParent, name='loginParent'),
-    path('loginpsychologist/', views.loginpsychologist, name='loginpsychologist'),
     path('sign_up_parent/', views.sign_up_parent, name='sign_up_parent'),
     path('navbarforpsy/', views.navbarforpsy, name='navbarforpsy'),
-    path('loginpsychologist/homepageforpsy', views.homepageforpsy, name='homepageforpsy'),
+    path('homepageforpsy/', views.homepageforpsy, name='homepageforpsy'),
     path('homepage_parent/', views.homepage_parent, name='homepage_parent'),
     path('homepage_teenager/', views.homepage_teenager, name='homepage_teenager'),
+    path('profile/', views.profile, name='profile'),
+    path('login_psy/', views.login_psy, name='login_psy'),
 
 ]
-# loginParent
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
