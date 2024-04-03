@@ -1,13 +1,13 @@
 {% load static %}
-    <link rel="stylesheet" type="text/css" href="{% static '/css/test.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static '/css/testt.css' %}">
 
 {#<h1>Responsive Menu Effect#}
 {#hover on menu items!#}
 {#</h1>#}
 
 <ul class="menu">
-  <li><a href="#" class="active">Home</a></li>
-  <li><a href="">About</a></li>
+  <li><a href="{% url 'official_homepage' %}" >Home</a></li>
+  <li><a href="{% url 'About' %}">About</a></li>
 
 
     <li>

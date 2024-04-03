@@ -1,0 +1,88 @@
+{% block content %}
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static '/css/contact_us.css' %}">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,700,900&display=swap" rel="stylesheet">
+    <title>Contact us</title>
+    <script nonce="55244ea9-d1de-4876-8c8b-a06d69694e2c">try{(function(w,d){!function(du,dv,dw,dx){du[dw]=du[dw]||{};du[dw].executed=[];du.zaraz={deferred:[],listeners:[]};du.zaraz.q=[];du.zaraz.f=function(dy){return async function(){var dz=Array.prototype.slice.call(arguments);du.zaraz.q.push({m:dy,a:dz})}};for(const dA of["track","set","debug"])du.zaraz[dA]=du.zaraz.f(dA);du.zaraz.init=()=>{var dB=dv.getElementsByTagName(dx)[0],dC=dv.createElement(dx),dD=dv.getElementsByTagName("title")[0];dD&&(du[dw].t=dv.getElementsByTagName("title")[0].text);du[dw].x=Math.random();du[dw].w=du.screen.width;du[dw].h=du.screen.height;du[dw].j=du.innerHeight;du[dw].e=du.innerWidth;du[dw].l=du.location.href;du[dw].r=dv.referrer;du[dw].k=du.screen.colorDepth;du[dw].n=dv.characterSet;du[dw].o=(new Date).getTimezoneOffset();if(du.dataLayer)for(const dH of Object.entries(Object.entries(dataLayer).reduce(((dI,dJ)=>({...dI[1],...dJ[1]})),{})))zaraz.set(dH[0],dH[1],{scope:"page"});du[dw].q=[];for(;du.zaraz.q.length;){const dK=du.zaraz.q.shift();du[dw].q.push(dK)}dC.defer=!0;for(const dL of[localStorage,sessionStorage])Object.keys(dL||{}).filter((dN=>dN.startsWith("_zaraz"))).forEach((dM=>{try{du[dw]["z"+dM.slice(7)]=JSON.parse(dL.getItem(dM))}catch{du[dw]["z_"+dM.slice(7)]=dL.getItem(dM)}}));dC.referrerPolicy="origin";dC.src="/cdn-cgi/zaraz/s.js?z="+btoa(encodeURIComponent(JSON.stringify(du[dw])));dB.parentNode.insertBefore(dC,dB)};["complete","interactive"].includes(dv.readyState)?zaraz.init():du.addEventListener("DOMContentLoaded",zaraz.init)}(w,d,"zarazData","script");})(window,document)}catch(e){throw fetch("/cdn-cgi/zaraz/t"),e;};</script></title>
+</head>
+<body>
+{%  include 'ourapp/navbar_parent.html' %}
+
+<div class="content">
+    <div class="container">
+        <div class="row">
+            <!-- CV Information -->
+            <div class="col-lg-6">
+                <div class="cv-info">
+                    <h2 class="section-title">For contact:</h2>
+                    <div class="cv-content">
+                        <h3>Address:</h3>
+                        <p>Swing by for a cup of coffee, or whatever.</p>
+                        <p><i class="fa fa-map-marker w3-text-teal w3-xlarge"></i>Beer Sheva</p>
+                        <p><i class="fa fa-phone w3-text-teal w3-xlarge"></i>+00 1515151515</p>
+                        <p><i class="fa fa-envelope-o w3-text-teal w3-xlarge"></i>test@test.com</p>
+                        <h2>Information about the psychologist</h2>
+                        <p>
+                            [Objective]<br>
+                            A dedicated and empathetic psychologist with a passion for assisting parents in navigating the challenges of child-rearing. Skilled in providing guidance and support to promote healthy family dynamics and parental well-being.
+                        </p>
+                        <p>
+                            [Education]<br>
+
+                            Ph.D. in Clinical Psychology, University of California, Los Angeles, CA (2010)<br>
+                            Master of Science in Psychology, University of California, Los Angeles, CA (2007)<br>
+                            Bachelor of Arts in Psychology, University of California, Berkeley, CA (2005)<br>
+                        </p>
+                        <p>
+                            [Professional Experience]<br>
+
+                            Senior Psychologist, Family Wellness Center, USA<br>
+
+                            Provided individual and group therapy sessions for parents dealing with various challenges including stress management, relationship issues, and child behavior concerns.<br>
+                            Developed and implemented tailored treatment plans to address specific needs and goals of each parent.<br>
+                            Conducted workshops and seminars on effective parenting strategies and communication skills.<br>
+                            Collaborated with multidisciplinary teams to ensure comprehensive care for families.<br>
+                            Child and Family Therapist, Hope Counseling Services, USA<br>
+
+                            Offered counseling services to parents and families facing difficulties such as divorce, trauma, and adjustment issues.<br>
+                            Utilized evidence-based therapeutic approaches including cognitive-behavioral therapy (CBT) and family systems theory.<br>
+                            Assisted parents in enhancing their coping skills and fostering positive relationships with their children.<br>
+                            Conducted assessments to identify strengths and areas for growth within family systems.<br>
+                            Psychologist Intern, Child Development Clinic, USA<br>
+
+                            Conducted psychological assessments to evaluate children's developmental and behavioral concerns.<br>
+                            Provided parent education and guidance on understanding and supporting their child's needs.<br>
+                            Collaborated with other professionals including pediatricians and educators to develop holistic treatment plans.<br>
+                            Participated in research projects aimed at improving interventions for children and families.<br>
+                        </p>
+                        <p>
+                            [Skills]<br>
+
+                            Proficient in individual and group therapy techniques<br>
+                            Strong understanding of child development and family dynamics<br>
+                            Excellent communication and interpersonal skills<br>
+                            Ability to empathize and build rapport with diverse clientele<br>
+                            Skilled in crisis intervention and conflict resolution<br>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- JavaScript Libraries -->
+<script src="{% static 'js/jquery-3.3.1.min.js' %}"></script>
+<script src="{% static 'js/popper.min.js' %}"></script>
+<script src="{% static 'js/bootstrap.min.js' %}"></script>
+<script src="{% static 'js/jquery.validate.min.js' %}"></script>
+<script src="{% static 'js/main.js' %}"></script>
+<script defer src="https://static.cloudflareinsights.com/beacon.min.js/v84a3a4012de94ce1a686ba8c167c359c1696973893317" integrity="sha512-euoFGowhlaLqXsPWQ48qSkBSCFs3DPRyiwVu3FjR96cMPx+Fr+gpWRhIafcHwqwCqWS42RZhIudOvEI+Ckf6MA==" data-cf-beacon='{"rayId":"8653bb4e7a74e3db","version":"2024.3.0","token":"cd0b4b3a733644fc843ef0b185f98241"}' crossorigin="anonymous"></script>
+</body>
+</html>
+{% endblock content %}

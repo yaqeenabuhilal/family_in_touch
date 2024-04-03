@@ -1,0 +1,46 @@
+
+{% block head %}
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/linksPages.css' %}">
+    <link href="https://fonts.googleapis.com/css?family=Raleway&display=swap" rel="stylesheet">
+{% endblock %}
+
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Your head content here -->
+</head>
+<body>
+    <!-- Your body content here -->
+                        <div class="one">
+                            <h1 style="margin-right: 170px">Behavioral Challenges Links</h1>
+                        </div>
+    <div class="content">
+        <div class="row align-items-center">
+            <div class="col-lg-6 mr-auto">
+                <div class="row">
+                    <div class="col-md-6">
+
+                        <ul class="list-unstyled mb-5">
+                            {% if behavioral_challenges_ten %}
+                                {% for i in behavioral_challenges_ten reversed %}
+                                    <li>
+                                        <p style="text-align: left;">:<span class="description-label">Description</span> <br><a>{{ i.Description }}</a><br></p>
+                                        <br>
+                                        <p style="text-align: left;">:<span class="link-label">Link</span> <br><a href="{{ i.link }}">{{ i.link }}</a></p>
+                                    </li>
+                                {% endfor %}
+                            {% else %}
+                                <li style="margin-right: 350px">.No behavioral challenges links available</li>
+                            {% endif %}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
+{% endblock %}

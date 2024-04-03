@@ -1,0 +1,29 @@
+
+{% extends 'ourapp/main.html' %}
+
+{% block content %}
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static '/css/testerforfeedbackpsyha.css' %}">
+<table>
+  <thead>
+    <tr>
+      <th>teenger's massge</th>
+      <th>psychotherapist's Summary</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for feedback in teenger_feedback %}
+    <tr>
+
+      <td><strong></strong> {{ feedback.text }}</td>
+      <td><strong></strong> {{ feedback.sammary }}</td>
+    </tr>
+    {% empty %}
+    <tr>
+      <td colspan="2">No feedback available for this teenager.</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock content %}
+

@@ -145,9 +145,8 @@ button{
         <div class="shape"></div>
         <div class="shape"></div>
     </div>
-            <form method="post" action="">
-
-        <h3>Login Here psycholog</h3>
+        <form method="post" action="">
+        <h3>Login Here for pyscholgist</h3>
 
         <label for="username">Username</label>
             {% csrf_token %}
@@ -158,6 +157,7 @@ button{
 
         <button>Log In</button>
         </form>
+
         {% for message in messages %}
         <p id="messages">{{ message }}</p>
 

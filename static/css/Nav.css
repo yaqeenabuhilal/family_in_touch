@@ -32,6 +32,10 @@ h1 {
   margin: auto;
   position: relative;
   background-color:moccasin;
+  height: 50px;
+  margin: auto;
+  position: relative;
+  background-color: rosybrown;
   z-index: 7;
 }
 .menu li {
@@ -73,6 +77,7 @@ li.slider {
   left: 0;
   background-color: #D3D3D3;
 }
+<<<<<<< HEAD
 .menu li:nth-child(2):hover ~ .slider,
 .menu li:nth-child(2):focus ~ .slider,
 .menu li:nth-child(2):active ~ .slider {
@@ -91,3 +96,49 @@ li.slider {
   left: 75%;
   background-color: #D3D3D3;
 }
+=======
+/*.menu li:nth-child(2):hover ~ .slider,*/
+.menu li:nth-child(2):focus ~ .slider,
+.menu li:nth-child(2):active ~ .slider {
+  left: 20%; /* Adjusted left position for five items */
+  background-color: #D3D3D3;
+}
+.menu li:nth-child(3):focus ~ .slider,
+.menu li:nth-child(3):active ~ .slider {
+  left: 40%; /* Adjusted left position for five items */
+  background-color: #D3D3D3;
+}
+.menu li:nth-child(4):focus ~ .slider,
+.menu li:nth-child(4):active ~ .slider {
+  left: 60%; /* Adjusted left position for five items */
+  background-color: #D3D3D3;
+}
+.menu li:nth-child(5):focus ~ .slider,
+.menu li:nth-child(5):active ~ .slider {
+  left: 80%; /* Adjusted left position for five items */
+  background-color: #D3D3D3;
+}
+.dropdown {
+  float: left;
+  width: 20%; /* Adjusted width for five items */
+  height: 100%;
+  margin-left: 100px;
+  margin-top: 25px;
+  font-size: 18px;
+  padding: 0;
+  /*position: relative;*/
+  display: inline-block;
+}
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #D3D3D3;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  padding: 12px 16px;
+  z-index: 1;
+}
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+>>>>>>> origin/master

@@ -1,0 +1,59 @@
+{% extends 'ourapp/main.html' %}
+{% block content %}
+<! DOCTYPE html>
+    <html lang="en">
+    <title>About us</title>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>About Us</title>
+        <style>
+            body {
+                font-family:'PT Sans', sans-serif;
+                margin: 0;
+                padding: 0;
+                background-color: #f8f8f8;
+                color: #333;
+                line-height: 1.6;
+            }
+            header {
+                color: #fff;
+                padding: 20px 0;
+                text-align: center;
+            }
+            .container {
+                max-width: 800px;
+                margin: 20px auto;
+                padding: 0 20px;
+            }
+            h1 {
+                font-size: 36px;
+                margin-bottom: 20px;
+            }
+            p {
+                margin-bottom: 20px;
+            }
+        </style>
+    </head>
+    <body>
+    <header>
+        <h1>About Us</h1>
+    </header>
+    <div class="container">
+        <p>Welcome to our website! We are a team dedicated to providing you with the best care for the families that face different issues </p>
+        <p>Our mission is to keep the family in touch with their kids </p>
+        <h2>Our Team</h2>
+        <p>Meet the people behind our company:</p>
+        <ul>
+            <li>Hiba Nasasra - SCE software engineering student</li>
+            <li>Yaqeen Abu Hilal - SCE software engineering student</li>
+            <li>Bayan Abu Mdegm - SCE software engineering student</li>
+            <li>Abed Asbe - SCE software engineering student</li>
+            <li>Alice Johnson - the psychologist</li>
+        </ul>
+        <h2>Our History</h2>
+        <p>Founded in 2024, our company has been dedicated and looking forward to help families </p>
+    </div>
+    </body>
+    </html>
+{% endblock content %}
