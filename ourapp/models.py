@@ -25,7 +25,17 @@ class Lecture(models.Model):
 class ParentFeedback(models.Model):
     parent=models.CharField(max_length=200,null=True)
     text=models.CharField(max_length=200,null=True)
+    sammary=models.CharField(max_length=200,null=True)
+    Parents=models.ForeignKey(User,null=True,on_delete=models.SET_NULL)
+    date = models.DateField(null=True)
+
+
 class TeengerFeedback(models.Model):
     Teenger=models.CharField(max_length=200,null=True)
     text=models.CharField(max_length=200,null=True)
+    sammary=models.CharField(max_length=200,null=True)
+    Teengers=models.ForeignKey(User,null=True,on_delete=models.SET_NULL)
+    date = models.DateField(null=True)
 
+
+################################################################

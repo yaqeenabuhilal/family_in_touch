@@ -1,5 +1,5 @@
 {% load static %}
-    <link rel="stylesheet" type="text/css" href="{% static '/css/testt.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static '/css/test.css' %}">
 
 {#<h1>Responsive Menu Effect#}
 {#hover on menu items!#}
@@ -7,7 +7,7 @@
 
 <ul class="menu">
   <li><a href="#" class="active">Home</a></li>
-  <li><a href="{% url 'loginTeenager' %}">About</a></li>
+  <li><a href="">About</a></li>
 
 
     <li>
@@ -27,7 +27,7 @@
   <div class="dropdown-content">
 <a href="{% url 'loginParent' %}">log in parent</a>
       <a href="{% url 'loginTeenager' %}">log in teenager</a>
-      <a href="#">log in pyschalogist</a>
+      <a href="{% url 'loginpsychologist' %}">log in pyschalogist</a>
   </div>
 </div>
     </li>

@@ -1,0 +1,42 @@
+
+    /* CSS styles for the title */
+    h2 {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        color: #333; /* Dark gray color */
+        text-align: center;
+        border-bottom: 2px solid #333; /* Dark gray border */
+        padding-bottom: 10px;
+    }
+
+    /* CSS styles for the button */
+    .custom-button {
+        background-color: #007bff; /* Blue background color */
+        color: #fff; /* White text color */
+        padding: 12px 24px; /* Padding */
+        border: none; /* No border */
+        border-radius: 6px; /* Rounded corners */
+        cursor: pointer; /* Cursor style on hover */
+        font-size: 16px; /* Font size */
+        margin-top: 20px; /* Space above the button */
+        display: inline-block; /* Display as inline-block to adjust margin */
+    }
+
+    /* Hover effect for the button */
+    .custom-button:hover {
+        background-color: #45343b; /* Darker blue background color */
+    }
+
+    /* Adjust space between table and button */
+    .button-container {
+        margin-top: 20px; /* Space between the table and button */
+    }
+
+    /* CSS styles for the lists */
+    ul {
+        list-style-type: none;
+        padding: 0;
+    }
+
+    li {
+        margin-bottom: 5px;
+    }

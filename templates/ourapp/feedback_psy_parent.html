@@ -1,0 +1,78 @@
+{% extends 'ourapp/main.html' %}
+
+{% block content %}
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static '/css/testerforfeedbackpsyha.css' %}">
+
+<style>
+  /* Style for the title container */
+  .title-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+  }
+
+  /* Style for the title */
+  h1 {
+    font-size: 32px; /* Smaller font size */
+    color: #333; /* Dark color for text */
+    padding: 20px; /* Add some padding */
+    border-bottom: 2px solid rgba(255, 207, 102, 0.75); /* Blue border bottom */
+    margin: 0; /* Remove default margin */
+  }
+
+  /* Style for the table */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 0 auto; /* Center the table horizontally */
+    background-color: #f8f9fa; /* Light background color */
+    border-radius: 10px; /* Rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add shadow */
+  }
+
+  /* Style for table headers */
+  th {
+    background-color: rgb(245, 222, 179); /* Blue background color */
+    color: #000000;
+    font-weight: bold;
+    text-align: left;
+    padding: 15px;
+  }
+
+  /* Style for table data */
+  td {
+    padding: 10px 15px;
+    border-bottom: 1px solid #ddd; /* Add border between rows */
+  }
+
+  /* Alternate row color */
+  tr:nth-child(even) {
+    background-color: #f2f2f2;
+  }
+</style>
+
+<div class="title-container">
+  <h1>Parents' Feedback table </h1>
+</div>
+
+<table>
+  <thead>
+    <tr>
+      <th>Parents List</th>
+      <th>Parent's Feedback</th>
+      <th>Parent's Feedback Date</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    {% for i in feedback_psy_parent %}
+    <tr>
+      <td>{{ i.parent }}</td>
+      <td>{{ i.text }}</td>
+      <td>{{ i.date }}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock content %}
