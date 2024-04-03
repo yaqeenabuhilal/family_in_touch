@@ -3,7 +3,18 @@
 <ul class="menu">
   <li><a href="{% url 'homepageforpsy' %}">MyHomePage</a></li>
   <li><a href="{% url 'profile' %}">profile</a></li>
-  <li><a href="#">uploading links</a></li>
+
+   <li>
+    <div class="dropdown">
+  <span>Courses</span>
+       <div class="dropdown-content">
+           <a href="{% url 'choicelinktopic_psy_par' %}">Post links For Parents</a>
+           <a href="{% url 'choicelinktopic_psy_ten' %}">Post links For Teenagers</a>
+           <a href="{% url 'view_links_psy_par' %}">Links Management For Parents</a>
+          <a href="{% url 'view_links_psy_ten' %}">Links Management For Teenagers</a>
+       </div>
+        </div>
+           </li>
     <li>
     <div class="dropdown">
   <span>Feedbacks</span>
@@ -12,10 +23,7 @@
            <a href="#">parents's list feedback</a>
            <a href="#">teenagers's list feedback</a>
 
-
        </div>
         </div>
            </li>
-
-
 </ul>
