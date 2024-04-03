@@ -2,6 +2,7 @@ from django.test import TestCase
 from django.urls import reverse
 from django.contrib.auth.models import User
 from django.contrib.auth.models import Group
+
 class TestLoginPsychologist(TestCase):
     def setUp(self):
         self.url = reverse('loginpsychologist')
@@ -24,6 +25,10 @@ import unittest
 import re
 from django.test import RequestFactory
 from ourapp.views import loginParent
+from .models import TeengerFeedback
+from .forms import CreatTeengerFeedbackForm
+from .views import add_teenger_feedback
+
 
 class TestLoginParents(TestCase):
     def setUp(self):
