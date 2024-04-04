@@ -205,6 +205,35 @@ def my_view(request):
     groups = user.groups.all()
     return render(request, 'ourapp/profile.html', {'user_groups': groups})
 
+def profileforparent(request):
+    if request.method == 'POST':
+        u_form = UpdateUserForm(request.POST,instance=request.user)
+        p_form = profileupdateform(request.POST,request.FILES,instance=request.user.profile)
+        if u_form.is_valid() and p_form.is_valid():
+            u_form.save()
+            p_form.save()
+            messages.success(request,f'Your account has been updated!')
+            return redirect('profileforparent')
+    else:
+        u_form = UpdateUserForm(instance=request.user)
+        p_form = profileupdateform(instance=request.user.profile)
+    context = {'u_form':u_form,'p_form':p_form}
+    return render(request, 'ourapp/profileforparent.html', context)
+
+def profileforteenager(request):
+    if request.method == 'POST':
+        u_form = UpdateUserForm(request.POST,instance=request.user)
+        p_form = profileupdateform(request.POST,request.FILES,instance=request.user.profile)
+        if u_form.is_valid() and p_form.is_valid():
+            u_form.save()
+            p_form.save()
+            messages.success(request,f'Your account has been updated!')
+            return redirect('profileforteenager')
+    else:
+        u_form = UpdateUserForm(instance=request.user)
+        p_form = profileupdateform(instance=request.user.profile)
+    context = {'u_form':u_form,'p_form':p_form}
+    return render(request, 'ourapp/profileforteenager.html', context)
 
 
 
@@ -372,13 +401,16 @@ def thank_you_page(request):
     return render(request, 'ourapp/thank_you_page.html')
 
 
-
-
-def sammaryforparent(request, parent_id):
-    # Get the parent object or return 404 if not found
-    parent = get_object_or_404(User, username=parent_id)
-    # Fetch feedback related to the specified parent
-    parent_feedback = ParentFeedback.objects.filter(Parents=parent)
+def sammaryforparent(request, parent_id=None):  # Add default value None for parent_id
+    if parent_id:
+        # Get the parent object or return 404 if not found
+        parent = get_object_or_404(User, username=parent_id)
+        # Fetch feedback related to the specified parent
+        parent_feedback = ParentFeedback.objects.filter(Parents=parent)
+    else:
+        # Handle the case where parent_id is not provided
+        parent = None
+        parent_feedback = None
     return render(request, 'ourapp/sammaryforparent.html', {'parent_feedback': parent_feedback, 'parent': parent})
 
 
