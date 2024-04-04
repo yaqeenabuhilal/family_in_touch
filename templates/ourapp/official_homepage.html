@@ -1,54 +1,126 @@
 {% extends 'ourapp/main.html' %}
 {% block content %}
-<! DOCTYPE html>
-<html lang="en">
-<title>About us</title>
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About Us</title>
-    <style>
-        body {
-            font-family: 'PT Sans', sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f8f8f8;
-            color: #333;
-            line-height: 1.6;
-        }
-        header {
-            background-color: #333;
-            color: #fff;
-            padding: 20px 0;
-            text-align: center;
-        }
-        .container {
-            max-width: 800px;
-            margin: 20px auto;
-            padding: 0 20px;
-        }
-        h1 {
-            font-size: 36px;
-            margin-bottom: 20px;
-        }
-        p {
-            margin-bottom: 20px;
-        }
-    </style>
-</head>
-<body>
-<div class="hero">
-    <h1>Welcome to Family in Touch</h1>
-    <p>Your trusted resource for connecting families and providing support</p>
+    {% load static %}
+    <!DOCTYPE html>
+    <html lang="en">
+    <html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    </head>
+    <body>
+
+
+    <!-- Header -->
+    <header class="w3-display-container w3-content w3-wide" style="max-width:1500px;" id="home">
+        <img src="../../static/images/home.png" alt="Image Description" width="1400" height="700">
+        <div class="w3-display-middle w3-margin-top w3-center" style="vertical-align: top; margin-top: -10px;">
+            <h1 class="w3-xlarge w3-text-brown" style="margin-top: 50px;"><span
+                    class="w3-padding w3-brown w3-opacity-min"><b>Welcome to Family in Touch!</b></span></h1>
+            <h2 class="w3-hide-small w3-text-brown">Your trusted resource for connecting families and providing
+                support</h2>
+        </div>
+    </header>
+
+    <!-- Page content -->
+    <div class="w3-content w3-padding" style="max-width:1564px">
+
+
+        <!-- About Section -->
+        <div class="w3-container w3-padding-38" id="about">
+            <h3 class="w3-border-bottom w3-border-light-grey w3-padding-45">About Our Web</h3>
+            <p>At Family in Touch, we understand the importance of family and the challenges they may face. Whether
+                you're dealing with financial struggles, emotional stress, or simply seeking ways to strengthen family
+                bonds, we're here to help.</p>
+            <p>Our mission is to provide a supportive platform where families can connect, share experiences, and find
+                the resources they need to thrive. From articles and guides on various family topics to community forums
+                and professional support services, we offer a wide range of resources tailored to meet the diverse needs
+                of families.</p>
+
+        </div>
+        <br>
+        <br>
+
+        <!-- Work Row -->
+        <div class="w3-container w3-padding-38" id="about">
+            <h3 class="w3-border-bottom w3-border-light-grey w3-padding-45">Our Psychologist</h3>
+            <p>Dr. Jane Doe is a licensed clinical psychologist with over 10 years of experience in providing
+                compassionate care and support to individuals, couples, and families.</p>
+            <p>Specializing in cognitive-behavioral therapy (CBT) and mindfulness-based approaches, Dr. Doe is dedicated
+                to helping her clients overcome challenges, build resilience, and achieve their personal goals.</p>
+        </div>
+        <br>
+        <br>
+
+        <h3 class="w3-border-bottom w3-border-light-grey w3-padding-16">Abot our psychologist</h3>
+        <div class="w3-container w3-padding-20 w3-card w3-light-grey" id="projects">
+    <div class="w3-quarter">
+        <h3>Experience</h3>
+        <p class="w3-margin-bottom">Private Practice, Clinical Psychologist (2015-present).</p>
+        <p class="w3-margin-bottom">Community Counseling Center, Lead Therapist (2012-2015)</p>
+        <p class="w3-margin-bottom">Staff Psychologist(2008-2012)</p>
+    </div>
+    <div class="w3-quarter">
+        <h3>Education</h3>
+        <p class="w3-margin-bottom">Ph.D. in Clinical Psychology</p>
+        <p class="w3-margin-bottom">M.A. in Counseling Psychology</p>
+    </div>
+    <div class="w3-quarter">
+        <h3>Credentials</h3>
+        <p class="w3-margin-bottom">Licensed Clinical Psychologist</p>
+        <p class="w3-margin-bottom">Certified in Cognitive-Behavioral Therapy (CBT)</p>
+    </div>
 </div>
-<main>
-    <p>At Family in Touch, we understand the importance of family and the challenges they may face. Whether you're dealing with financial struggles, emotional stress, or simply seeking ways to strengthen family bonds, we're here to help.</p>
-    <p>Our mission is to provide a supportive platform where families can connect, share experiences, and find the resources they need to thrive. From articles and guides on various family topics to community forums and professional support services, we offer a wide range of resources tailored to meet the diverse needs of families.</p>
-    <p>Join our community today and embark on a journey of support, understanding, and growth with Family in Touch.</p>
-</main>
-<footer>
-    <p>&copy; 2024 Family in Touch. All rights reserved.</p>
-</footer>
-</body>
-</html>
-{% endblock content %}
+
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+
+
+        <div class="w3-row-padding w3-grayscale">
+            <div class="w3-col l3 m6 w3-margin-bottom">
+                <h3>Yaqeen Abuhilal</h3>
+                <p class="w3-opacity">software engineering student</p>
+                <p>2nd year software engineering student.</p>
+            </div>
+            <div class="w3-col l3 m6 w3-margin-bottom">
+                <h3>Hiba Nsasra</h3>
+                <p class="w3-opacity">software engineering student</p>
+                <p>2nd year software engineering student.</p>
+            </div>
+            <div class="w3-col l3 m6 w3-margin-bottom">
+                <h3>Bayan Abu mdegem</h3>
+                <p class="w3-opacity">software engineering student</p>
+                <p>2nd year software engineering student.</p>
+            </div>
+            <div class="w3-col l3 m6 w3-margin-bottom">
+                <h3>Abed Abu asbe</h3>
+                <p class="w3-opacity">software engineering student</p>
+                <p>2nd year software engineering student.</p>
+            </div>
+        </div>
+
+
+    </div>
+    <!-- Footer -->
+    <footer class="w3-center w3-brown w3-padding-16">
+        <p>Join our community today and embark on a journey of support, understanding, and growth with Family in
+            Touch.</p>
+        </main>
+
+    </footer>
+
+
+    <!-- Footer -->
+    <footer class="w3-center w3-black w3-padding-16">
+        <p>Powered by <a href="http://127.0.0.1:8000/" title="Family In Touch" target="_blank"
+                         class="w3-hover-text-blue">Family In Touch</a></p>
+        <p>&copy; 2024 Family in Touch. All rights reserved.</p>
+    </footer>
+
+    </body>
+    </html>
+{% endblock %}

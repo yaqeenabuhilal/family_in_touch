@@ -2,7 +2,16 @@
     <link rel="stylesheet" type="text/css" href="{% static '/css/navlast.css' %}">
 <ul class="menu">
   <li><a href="{% url 'homepageforpsy' %}">MyHomePage</a></li>
-  <li><a href="{% url 'profile' %}">profile</a></li>
+<li>
+    <div class="dropdown">
+  <span>Profile</span>
+       <div class="dropdown-content">
+           <li><a href="{% url 'profile' %}">profile</a></li>
+           <a href="{% url 'logou' %}">Post links For Teenagers</a>
+
+       </div>
+        </div>
+           </li>
 
    <li>
     <div class="dropdown">
