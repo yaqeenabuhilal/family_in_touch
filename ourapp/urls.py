@@ -36,12 +36,13 @@ urlpatterns = [
     path('send_sammary_to_teen/<str:username>/<str:date>/', views.add_send_sammary_to_teen, name='send_sammary_to_teen'),
     path('list_of_teenger/', views.view_list_of_teenger, name='list_of_teenger'),
     path('list_of_parent/', views.view_list_of_parent, name='list_of_parent'),
-    path('navbarforpsy/', views.navbarforpsy, name='navbarforpsy'),
+    path('navbar_parent/', views.navbar_parent, name='navbar_parent'),
+    path('navbar_teenager/', views.navbar_teenager, name='navbar_teenager'),
     path('official_homepage/', views.official_homepage, name='official_homepage'),
     path('About/', views.About, name='About'),
     path('contact_parent/', views.contact_parent, name='contact_parent'),
     path('contact_teens/', views.contact_teens, name='contact_teens'),
-    path('logout/', views.logout_view, name='logout'),
+    path('logout/', views.logout, name='logout'),
 
 
     path('choicelinktopic_teenageer/',views.choicelinktopic_teenager, name='choicelinktopic_teenageer'),

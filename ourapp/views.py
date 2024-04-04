@@ -527,20 +527,12 @@ def view_list_of_parent(request):
     return render(request, 'ourapp/list_of_parent.html', parent)
 
 
-def navbarforpsy(request):
-    return render(request, 'ourapp/navbarforpsy.html')
+def navbar_parent(request):
+    return render(request, 'ourapp/navbar_parent.html')
 
 
-def homepageforpsy(request):
-    return render(request, 'ourapp/homepageforpsy.html')
-
-
-def homepage_parent(request):
-    return render(request, 'ourapp/homepage_parent.html')
-
-
-def homepage_teenager(request):
-    return render(request, 'ourapp/homepage_teenager.html')
+def navbar_teenager(request):
+    return render(request, 'ourapp/navbar_teenager.html')
 
 
 def official_homepage(request):
@@ -559,9 +551,11 @@ def contact_parent(request):
     return render(request, 'ourapp/contact_parent.html')
 
 
-def logout_view(request):
+def logout(request):
     logout(request)
     return redirect('official_homepage')
+
+
 
 
 def error_parent(request):
