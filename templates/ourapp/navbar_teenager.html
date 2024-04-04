@@ -1,9 +1,18 @@
 {% load static %}
-    <link rel="stylesheet" type="text/css" href="{% static '/css/test.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static '/css/navlast.css' %}">
 <ul class="menu">
   <li><a href="{% url 'homepage_teenager' %}">MyHomePage</a></li>
-  <li><a href="{% url 'profileforteenager' %}">Profile</a></li>
-  <li><a href="{% url 'choicelinktopic_teenageer' %}">Courses</a></li>
+    <li>
+    <div class="dropdown">
+        <span>Profile</span>
+        <div class="dropdown-content">
+            <a href="{% url 'profileforteenager' %}">profile</a>
+            <a href="{% url 'logout_teens' %}">logout</a>
+        </div>
+    </div>
+    </li>
+
+    <li><a href="{% url 'choicelinktopic_teenageer' %}">Courses</a></li>
   <li>
       <div class="dropdown">
       <span> Feedbacks</span>
@@ -13,4 +22,5 @@
               </div>
         </div>
   </li>
+
 </ul>

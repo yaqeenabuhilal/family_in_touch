@@ -30,7 +30,8 @@ urlpatterns = [
     path('testerforfeed/', views.testerforfeed, name='testerforfeed'),
     path('drop_down_list_psy/', views.drop_down_list_psy, name='drop_down_list_psy'),
     path('abes_contact_us/', views.abes_contact_us, name='abes_contact_us'),
-    path('sammaryforparent/', views.sammaryforparent, name='sammaryforparent'),    path('sammaryforteenger/<str:teenger_id>/', views.sammaryforteenger, name='sammaryforteenger'),
+    path('sammaryforparent/<str:parent_id>/', views.sammaryforparent, name='sammaryforparent'),
+    path('sammaryforteenger/<str:teenger_id>/', views.sammaryforteenger, name='sammaryforteenger'),
     path('feedback_teenger/', views.add_teenger_feedback, name='feedback_teenger'),
     path('feedback_parent/', views.add_parent_feedback, name='feedback_parent'),
     path('send_sammary_to_parent/<str:username>/<str:date>/', views.add_send_sammary_to_parent, name='send_sammary_to_parent'),
@@ -43,7 +44,9 @@ urlpatterns = [
     path('About/', views.About, name='About'),
     path('contact_parent/', views.contact_parent, name='contact_parent'),
     path('contact_teens/', views.contact_teens, name='contact_teens'),
-    path('logout/', views.logout, name='logout'),
+    path('logout_parent/', views.logout_parent, name='logout_parent'),
+    path('logout_teens/',views.logout_teens,name='logout_teens'),
+    path('logout_psy/',views.logout_psy, name='logout_psy'),
 
 
     path('choicelinktopic_teenageer/',views.choicelinktopic_teenager, name='choicelinktopic_teenageer'),
