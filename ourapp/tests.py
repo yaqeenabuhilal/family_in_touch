@@ -101,3 +101,90 @@ class TestHomepageParent(TestCase):
         response = self.client.get(reverse('homepage_parent'))
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, 'ourapp/homepage_parent.html')
+
+class TestLinks(TestCase):
+    def test_choicelinktopic_teenager(self):
+        response = self.client.get(reverse('choicelinktopic_teenageer'))
+        self.assertEqual(response.status_code, 200)
+        self.assertTemplateUsed(response, 'ourapp/choicelinktopic_teenager.html')
+    def test_choicelinktopic_parent(self):
+        response = self.client.get(reverse('choicelinktopic_parent'))
+        self.assertEqual(response.status_code, 200)
+        self.assertTemplateUsed(response, 'ourapp/choicelinktopic_parent.html')
+    def test_behavioral_challenges_ten(self):
+        response = self.client.get(reverse('behavioral_challenges_ten'))
+        self.assertEqual(response.status_code, 200)
+        self.assertTemplateUsed(response, 'ourapp/behavioral_challenges_ten.html')
+
+    def test_communication_challenges_ten(self):
+        response = self.client.get(reverse('communication_challenges_ten'))
+        self.assertEqual(response.status_code, 200)
+        self.assertTemplateUsed(response, 'ourapp/communication_challenges_ten.html')
+
+
+    def test_emotional_support_ten(self):
+        response = self.client.get(reverse('emotional_support_ten'))
+        self.assertEqual(response.status_code, 200)
+        self.assertTemplateUsed(response, 'ourapp/emotional_support_ten.html')
+
+    def test_behavioral_challenges_par(self):
+        response = self.client.get(reverse('behavioral_challenges_par'))
+        self.assertEqual(response.status_code, 200)
+        self.assertTemplateUsed(response, 'ourapp/behavioral_challenges_par.html')
+    def test_communication_challenges_par(self):
+        response = self.client.get(reverse('communication_challenges_par'))
+        self.assertEqual(response.status_code, 200)
+        self.assertTemplateUsed(response, 'ourapp/communication_challenges_par.html')
+    def test_time_management_par(self):
+        response = self.client.get(reverse('time_management_par'))
+        self.assertEqual(response.status_code, 200)
+        self.assertTemplateUsed(response, 'ourapp/time_management_par.html')
+    def test_post_e_s_ten(self):
+        data = {
+            'link': 'https://example.com',
+            'description': 'Example Lecture'
+        }
+        response = self.client.post(reverse('post_e_s_ten'), data)
+        self.assertEqual(response.status_code, 302)
+    def test_post_c_ch_ten(self):
+        data = {
+            'link': 'https://example.com',
+            'description': 'Example Lecture'
+        }
+        response = self.client.post(reverse('post_c_ch_ten'), data)
+        self.assertEqual(response.status_code, 302)
+    def test_post_b_ch_ten(self):
+        data = {
+            'link': 'https://example.com',
+            'description': 'Example Lecture'
+        }
+        response = self.client.post(reverse('post_b_ch_ten'), data)
+        self.assertEqual(response.status_code, 302)
+
+    def test_post_b_ch_par(self):
+        data = {
+            'link': 'https://example.com',
+            'description': 'Example Lecture'
+        }
+        response = self.client.post(reverse('post_b_ch_par'), data)
+        self.assertEqual(response.status_code, 302)
+
+    def test_post_c_ch_par(self):
+        data = {
+            'link': 'https://example.com',
+            'description': 'Example Lecture'
+        }
+        response = self.client.post(reverse('post_c_ch_par'), data)
+        self.assertEqual(response.status_code, 302)
+
+    def test_post_t_m_par(self):
+        data = {
+            'link': 'https://example.com',
+            'description': 'Example Lecture'
+        }
+        response = self.client.post(reverse('post_t_m_par'), data)
+        self.assertEqual(response.status_code, 302)
+    def test_view_links_psy_par(self):
+        response = self.client.get(reverse('view_links_psy_par'))
+        self.assertEqual(response.status_code, 200)
+        self.assertTemplateUsed(response, 'ourapp/view_links_psy_par.html')
