@@ -41,15 +41,15 @@ from datetime import datetime
 
 
 
-def home(request):
-    return render(request, 'ourapp/dashbord.html')
-
-def feedback_parent(request):
-    return render(request,'ourapp/feedback_parent.html')
-
-
-def feedback_teenger(request):
-    return render(request,'ourapp/feedback_teenger.html')
+# def home(request):
+#     return render(request, 'ourapp/dashbord.html')
+#
+# def feedback_parent(request):
+#     return render(request,'ourapp/feedback_parent.html')
+#
+#
+# def feedback_teenger(request):
+#     return render(request,'ourapp/feedback_teenger.html')
 
 def feedback_psy_teenger(request):
     feedback_psy_teenger=TeengerFeedback.objects.all()
@@ -59,26 +59,26 @@ def feedback_psy_parent(request):
     feedback_psy_parent=ParentFeedback.objects.all()
 
     return render(request,'ourapp/feedback_psy_parent.html',{'feedback_psy_parent':feedback_psy_parent})
-def summary_psy(request):
-    return render(request,'ourapp/summary_psy.html')
+# def summary_psy(request):
+#     return render(request,'ourapp/summary_psy.html')
+#
+#
+# def drop_down_list_psy(request):
+#     return render(request,'ourapp/drop_down_list_psy.html')
 
 
-def drop_down_list_psy(request):
-    return render(request,'ourapp/drop_down_list_psy.html')
-
-
-def feedback(request):
-    return render(request, 'ourapp/feedback.html')
-
-
-def link(request):
-    return render(request, 'ourapp/link.html')
-
-
-    return render(request,'ourapp/link.html')
-def testerforfeed(request):
-    return render(request,'ourapp/testerforfeed.html')
-
+# def feedback(request):
+#     return render(request, 'ourapp/feedback.html')
+#
+#
+# def link(request):
+#     return render(request, 'ourapp/link.html')
+#
+#
+#     return render(request,'ourapp/link.html')
+# def testerforfeed(request):
+#     return render(request,'ourapp/testerforfeed.html')
+#
 
 
 
@@ -102,19 +102,19 @@ def loginTeenager(request):
 
 
 
-def test(request):
-    return render(request, 'ourapp/test.html')
+# def test(request):
+#     return render(request, 'ourapp/test.html')
+#
+#
+# def aaa(request):
+#     return render(request, 'ourapp/login.html')
 
+# def abes_contact_us(request):
+#     return render(request,'ourapp/abes_contact_us.html')
+#
 
-def aaa(request):
-    return render(request, 'ourapp/login.html')
-
-def abes_contact_us(request):
-    return render(request,'ourapp/abes_contact_us.html')
-
-
-def test_addfeedbackteen(request):
-    return render(request,'ourapp/test_addfeedbackteen.html')
+# def test_addfeedbackteen(request):
+#     return render(request,'ourapp/test_addfeedbackteen.html')
 
 def singupteenager(request):
     form = CreateUserForm()
@@ -403,25 +403,25 @@ def thank_you_page(request):
     return render(request, 'ourapp/thank_you_page.html')
 
 
-def sammaryforparent1(request, parent_id):  # Add default value None for parent_id
-    parent = get_object_or_404(User, username=parent_id)
-
-    # Fetch feedback related to the specified teenger
-    parent_feedback = ParentFeedback.objects.filter(Parents=parent)
-
-    return render(request, 'ourapp/sammaryforparent.html', {'parent_feedback': parent_feedback, 'parent': parent})
-    # user=User.objects.get(username=pk)
-    # 	order = user.order_set.all()
-    if parent_id:
-        # Get the parent object or return 404 if not found
-        parent = get_object_or_404(User, username=parent_id)
-        # Fetch feedback related to the specified parent
-        parent_feedback = ParentFeedback.objects.filter(Parent=parent)
-    else:
-        # Handle the case where parent_id is not provided
-        parent = None
-        parent_feedback = None
-    return render(request, 'ourapp/sammaryforparent.html', {'parent_feedback': parent_feedback, 'parent': parent})
+# def sammaryforparent1(request, parent_id):  # Add default value None for parent_id
+#     parent = get_object_or_404(User, username=parent_id)
+#
+#     # Fetch feedback related to the specified teenger
+#     parent_feedback = ParentFeedback.objects.filter(Parents=parent)
+#
+#     return render(request, 'ourapp/sammaryforparent.html', {'parent_feedback': parent_feedback, 'parent': parent})
+#     # user=User.objects.get(username=pk)
+#     # 	order = user.order_set.all()
+#     if parent_id:
+#         # Get the parent object or return 404 if not found
+#         parent = get_object_or_404(User, username=parent_id)
+#         # Fetch feedback related to the specified parent
+#         parent_feedback = ParentFeedback.objects.filter(Parent=parent)
+#     else:
+#         # Handle the case where parent_id is not provided
+#         parent = None
+#         parent_feedback = None
+#     return render(request, 'ourapp/sammaryforparent.html', {'parent_feedback': parent_feedback, 'parent': parent})
 
 def sammaryforparent(request, parent_id):
     parent = get_object_or_404(User, username=parent_id)
@@ -493,12 +493,12 @@ def add_parent_feedback(request):
 
 
 
-def send_sammary_to_parent(request):
-    return render(request,'ourapp/send_sammary_to_parent.html')
-
-
-def send_sammary_to_teen(request):
-    return render(request,'ourapp/send_sammary_to_teen.html')
+# def send_sammary_to_parent(request):
+#     return render(request,'ourapp/send_sammary_to_parent.html')
+#
+#
+# def send_sammary_to_teen(request):
+#     return render(request,'ourapp/send_sammary_to_teen.html')
 
 
 
@@ -555,8 +555,8 @@ def add_send_sammary_to_teen(request,username,date):
 
 
 
-def list_of_teenger(request):
-    return render(request, 'ourapp/list_of_teenger.html')
+# def list_of_teenger(request):
+#     return render(request, 'ourapp/list_of_teenger.html')
 
 
 
