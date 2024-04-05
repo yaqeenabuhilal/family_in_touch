@@ -1,4 +1,4 @@
-{%  include 'ourapp/navbarforpsy.html' %}
+{% include 'ourapp/navbarforpsy.html' %}
 {% block content %}
     {% load static %}
     <link rel="stylesheet" type="text/css" href="{% static '/css/testerforfeedbackpsyha.css' %}">
@@ -15,7 +15,6 @@
             font-size: 16px; /* Font size */
             margin-top: 20px; /* Space above the button */
             display: inline-block; /* Display as inline-block to adjust margin */
-
         }
 
         /* Hover effect */
@@ -27,22 +26,16 @@
         .button-container {
             margin-top: 20px; /* Space between the table and button */
         }
-
-
     </style>
 
-    <h2>parents List</h2>
+    <h2>Parents List</h2>
     <table>
         <thead>
         <tr>
-            <th>parent's name list</th>
-
-            <th>parent's user name</th>
-
-            <th>date of meeting</th>
-
-            <th>clike here to send sammary</th>
-
+            <th>Parent's Name</th>
+            <th>Parent's Username</th>
+            <th>Date of Meeting</th>
+            <th>Click Here to Send Summary</th>
         </tr>
         </thead>
 
@@ -56,26 +49,19 @@
               crossorigin="anonymous">
         <link rel="stylesheet" type="text/css" href="{% static '/css/testt.css' %}">
         {% for h in users_in_group1 %}
-            <tr>
-                {% for k in feed1 %}
-                    {% if h.username == k.parent %}
-                        <td> {{ h.first_name }}</td>>
-                        <td> {{ h.username }}</td>>
-                        <td> {{ k.date }}</td>
+            {% for k in feed1 %}
+                {% if h.username == k.parent %}
+                    <tr>
+                        <td>{{ h.first_name }}</td>
+                        <td>{{ h.username }}</td>
+                        <td>{{ k.date }}</td>
                         <td><a class="btn btn-outline-info custom-button"
-                               href="{% url 'send_sammary_to_parent' h.username k.date %}"> Click Here to Send Summary
-                        </td>
-                        </tr>
-                    {% endif %}
-                {% endfor %}
-            </tr>
-
-
-
+                               href="{% url 'send_sammary_to_parent' h.username k.date %}">Click Here to Send Summary</a></td>
+                    </tr>
+                {% endif %}
+            {% endfor %}
         {% endfor %}
         </tbody>
     </table>
 
 {% endblock content %}
-
-

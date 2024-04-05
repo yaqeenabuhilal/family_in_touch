@@ -20,6 +20,8 @@ urlpatterns = [
     path('homepage_parent/', views.homepage_parent, name='homepage_parent'),
     path('homepage_teenager/', views.homepage_teenager, name='homepage_teenager'),
     path('profile/', views.profile, name='profile'),
+    path('profileforparent/', views.profileforparent, name='profileforparent'),
+    path('profileforteenager/', views.profileforteenager, name='profileforteenager'),
     path('login_psy/', views.login_psy, name='login_psy'),
     path('sign_up_parent/', views.sign_up_parent, name='sign_up_parent'),
     path('feedback_psy_teenger/', views.feedback_psy_teenger, name='feedback_psy_teenger'),
@@ -42,7 +44,9 @@ urlpatterns = [
     path('About/', views.About, name='About'),
     path('contact_parent/', views.contact_parent, name='contact_parent'),
     path('contact_teens/', views.contact_teens, name='contact_teens'),
-    path('logout/', views.logout, name='logout'),
+    path('logout_parent/', views.logout_parent, name='logout_parent'),
+    path('logout_teens/',views.logout_teens,name='logout_teens'),
+    path('logout_psy/',views.logout_psy, name='logout_psy'),
 
 
     path('choicelinktopic_teenageer/',views.choicelinktopic_teenager, name='choicelinktopic_teenageer'),

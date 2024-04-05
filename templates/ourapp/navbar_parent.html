@@ -5,14 +5,14 @@
 
 
   <li><a href="{% url 'homepage_parent' %}">MyHomePage</a></li>
-  <li><a href="#">Profile</a></li>
+  <li><a href="{% url 'profileforparent' %}">Profile</a></li>
   <li><a href="{% url 'choicelinktopic_parent' %}">Courses</a></li>
     <li>
       <div class="dropdown">
       <span> Feedbacks</span>
           <div class="dropdown-content">
-           <a href="#">Resevie Feedback</a>
-           <a href="#">Send Feedback</a>
+           <a href="{% url 'sammaryforparent' parent_id=user.username %}">Resevie Feedback</a>
+           <a href="{% url 'feedback_parent' %}">Send Feedback</a>
               </div>
         </div>
   </li>

@@ -1,6 +1,8 @@
 from django.shortcuts import render, redirect
 from django.shortcuts import render, redirect, get_object_or_404
 from django.http import HttpResponse
+from django.shortcuts import get_object_or_404
+
 from django.forms import inlineformset_factory
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib import messages
@@ -8,8 +10,8 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import Group
 from .models import *
-from itertools import count, repeat,chain
-from .forms import CreateUserForm,profileupdateform, UpdateUserForm
+from itertools import count, repeat, chain
+from .forms import CreateUserForm, profileupdateform, UpdateUserForm
 from django.contrib.auth.models import User
 from .models import profile
 from ourapp.models import profile
@@ -31,7 +33,7 @@ from django.shortcuts import render
 from .models import Lecture
 
 from .forms import TeengerFeedbackForm
-from .forms import ParentFeedbackForm,updateTeengersammaryForm,updateparentsammaryForm
+from .forms import ParentFeedbackForm, updateTeengersammaryForm, updateparentsammaryForm
 from .forms import CreateParentFeedbackForm
 from .forms import CreatTeengerFeedbackForm
 from datetime import datetime
@@ -159,7 +161,7 @@ def login_psy(request):
             else:
                 messages.info(request, 'username OR password incorrert')
         else:
-                messages.info(request, 'username OR password incorrert')
+            messages.info(request, 'username OR password incorrert')
     context = {}
     return render(request, 'ourapp/login_psy.html', context)
 
@@ -205,6 +207,35 @@ def my_view(request):
     groups = user.groups.all()
     return render(request, 'ourapp/profile.html', {'user_groups': groups})
 
+def profileforparent(request):
+    if request.method == 'POST':
+        u_form = UpdateUserForm(request.POST,instance=request.user)
+        p_form = profileupdateform(request.POST,request.FILES,instance=request.user.profile)
+        if u_form.is_valid() and p_form.is_valid():
+            u_form.save()
+            p_form.save()
+            messages.success(request,f'Your account has been updated!')
+            return redirect('profileforparent')
+    else:
+        u_form = UpdateUserForm(instance=request.user)
+        p_form = profileupdateform(instance=request.user.profile)
+    context = {'u_form':u_form,'p_form':p_form}
+    return render(request, 'ourapp/profileforparent.html', context)
+
+def profileforteenager(request):
+    if request.method == 'POST':
+        u_form = UpdateUserForm(request.POST,instance=request.user)
+        p_form = profileupdateform(request.POST,request.FILES,instance=request.user.profile)
+        if u_form.is_valid() and p_form.is_valid():
+            u_form.save()
+            p_form.save()
+            messages.success(request,f'Your account has been updated!')
+            return redirect('profileforteenager')
+    else:
+        u_form = UpdateUserForm(instance=request.user)
+        p_form = profileupdateform(instance=request.user.profile)
+    context = {'u_form':u_form,'p_form':p_form}
+    return render(request, 'ourapp/profileforteenager.html', context)
 
 
 
@@ -372,24 +403,40 @@ def thank_you_page(request):
     return render(request, 'ourapp/thank_you_page.html')
 
 
+def sammaryforparent1(request, parent_id):  # Add default value None for parent_id
+    parent = get_object_or_404(User, username=parent_id)
 
+    # Fetch feedback related to the specified teenger
+    parent_feedback = ParentFeedback.objects.filter(Parents=parent)
+
+    return render(request, 'ourapp/sammaryforparent.html', {'parent_feedback': parent_feedback, 'parent': parent})
+    # user=User.objects.get(username=pk)
+    # 	order = user.order_set.all()
+    if parent_id:
+        # Get the parent object or return 404 if not found
+        parent = get_object_or_404(User, username=parent_id)
+        # Fetch feedback related to the specified parent
+        parent_feedback = ParentFeedback.objects.filter(Parent=parent)
+    else:
+        # Handle the case where parent_id is not provided
+        parent = None
+        parent_feedback = None
+    return render(request, 'ourapp/sammaryforparent.html', {'parent_feedback': parent_feedback, 'parent': parent})
 
 def sammaryforparent(request, parent_id):
-    # Get the parent object or return 404 if not found
     parent = get_object_or_404(User, username=parent_id)
-    # Fetch feedback related to the specified parent
     parent_feedback = ParentFeedback.objects.filter(Parents=parent)
     return render(request, 'ourapp/sammaryforparent.html', {'parent_feedback': parent_feedback, 'parent': parent})
 
 
 def sammaryforteenger(request, teenger_id):
     # Get the teenger object or return 404 if not found
+    teenger = get_object_or_404(User, username=teenger_id)
 
-    teenger = User.objects.get(username=teenger_id)
-    # Fetch feedback related to the specified parent
-    teenger_feedback = TeengerFeedback.objects.filter(Teengers=teenger)
-    return render(request, 'ourapp/sammaryforteenger.html', {'teenger_feedback':  teenger_feedback, 'teenger': teenger})
+    # Fetch feedback related to the specified teenger
+    teenger_feedback = TeengerFeedback.objects.filter(Teenger=teenger)
 
+    return render(request, 'ourapp/sammaryforteenger.html', {'teenger_feedback': teenger_feedback, 'teenger': teenger})
 # user=User.objects.get(username=pk)
 # 	order = user.order_set.all()
 # 	context = {'order':order,'item':pk}
@@ -406,11 +453,12 @@ def add_teenger_feedback(request):
             form = CreatTeengerFeedbackForm(request.POST)
             if form.is_valid():
                 form.save()
-                return redirect('feedback_psy_teenger')
+                messages.success(request, 'Feedback sent successfully!')
+
             else:
-                messages.info(request, 'the info is not valid')
+                return redirect('error_teenger')
         else:
-            messages.info(request, 'this product already exsited')
+            return redirect('error_teenger')
     context = {'form': form}
     return render(request, 'ourapp/feedback_teenger.html', context)
 
@@ -429,11 +477,11 @@ def add_parent_feedback(request):
             form = CreateParentFeedbackForm(request.POST)
             if form.is_valid():
                 form.save()
-                return redirect('feedback_psy_parent')
+                messages.success(request, 'Feedback sent successfully!')
             else:
-                messages.info(request, 'the info is not valid')
+                return redirect('error_parent')
         else:
-            messages.info(request, 'this product already exsited')
+            return redirect('error_parent')
     context = {'form': form}
     return render(request, 'ourapp/feedback_parent.html', context)
 
@@ -469,7 +517,7 @@ def add_send_sammary_to_parent(request,username,date):
             form = updateparentsammaryForm(request.POST,instance=feed1)
             if form.is_valid():
                 form.save()
-                return redirect('sammaryforparent',username)  # Redirect to a success page
+                messages.success(request, 'summary sent successfully!')
     context = {'form': form}
     return render(request, 'ourapp/send_sammary_to_parent.html', context)
 
@@ -496,7 +544,10 @@ def add_send_sammary_to_teen(request,username,date):
             form = updateTeengersammaryForm(request.POST,instance=feed)
             if form.is_valid():
                 form.save()
-                return redirect('sammaryforteenger',username)  # Redirect to a success page
+                messages.success(request, 'summary sent successfully!')
+            else:
+                return redirect('sammaryforteenger', username)
+
     context = {'form': form}
     return render(request, 'ourapp/send_sammary_to_teen.html', context)
 
@@ -551,11 +602,21 @@ def contact_parent(request):
     return render(request, 'ourapp/contact_parent.html')
 
 
-def logout(request):
+def logout_view(request):
     logout(request)
     return redirect('official_homepage')
 
 
+def logout_parent(request):
+    return render(request, 'ourapp/logout_parent.html')
+
+
+def logout_teens(request):
+    return render(request, 'ourapp/logout_teens.html')
+
+
+def logout_psy(request):
+    return render(request, 'ourapp/logout_psy.html')
 
 
 def error_parent(request):
