@@ -1,6 +1,8 @@
 from django.shortcuts import render, redirect
 from django.shortcuts import render, redirect, get_object_or_404
 from django.http import HttpResponse
+from django.shortcuts import get_object_or_404
+
 from django.forms import inlineformset_factory
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib import messages
@@ -416,12 +418,12 @@ def sammaryforparent(request, parent_id=None):  # Add default value None for par
 
 def sammaryforteenger(request, teenger_id):
     # Get the teenger object or return 404 if not found
+    teenger = get_object_or_404(User, username=teenger_id)
 
-    teenger = User.objects.get(username=teenger_id)
-    # Fetch feedback related to the specified parent
+    # Fetch feedback related to the specified teenger
     teenger_feedback = TeengerFeedback.objects.filter(Teengers=teenger)
-    return render(request, 'ourapp/sammaryforteenger.html', {'teenger_feedback':  teenger_feedback, 'teenger': teenger})
 
+    return render(request, 'ourapp/sammaryforteenger.html', {'teenger_feedback': teenger_feedback, 'teenger': teenger})
 # user=User.objects.get(username=pk)
 # 	order = user.order_set.all()
 # 	context = {'order':order,'item':pk}
@@ -438,11 +440,12 @@ def add_teenger_feedback(request):
             form = CreatTeengerFeedbackForm(request.POST)
             if form.is_valid():
                 form.save()
-                return redirect('feedback_psy_teenger')
+                messages.success(request, 'Feedback sent successfully!')
+
             else:
-                messages.info(request, 'the info is not valid')
+                return redirect('error_teenger')
         else:
-            messages.info(request, 'this product already exsited')
+            return redirect('error_teenger')
     context = {'form': form}
     return render(request, 'ourapp/feedback_teenger.html', context)
 
@@ -461,11 +464,11 @@ def add_parent_feedback(request):
             form = CreateParentFeedbackForm(request.POST)
             if form.is_valid():
                 form.save()
-                return redirect('feedback_psy_parent')
+                messages.success(request, 'Feedback sent successfully!')
             else:
-                messages.info(request, 'the info is not valid')
+                return redirect('error_parent')
         else:
-            messages.info(request, 'this product already exsited')
+            return redirect('error_parent')
     context = {'form': form}
     return render(request, 'ourapp/feedback_parent.html', context)
 
@@ -501,7 +504,7 @@ def add_send_sammary_to_parent(request,username,date):
             form = updateparentsammaryForm(request.POST,instance=feed1)
             if form.is_valid():
                 form.save()
-                return redirect('sammaryforparent',username)  # Redirect to a success page
+                messages.success(request, 'summary sent successfully!')
     context = {'form': form}
     return render(request, 'ourapp/send_sammary_to_parent.html', context)
 
@@ -528,7 +531,10 @@ def add_send_sammary_to_teen(request,username,date):
             form = updateTeengersammaryForm(request.POST,instance=feed)
             if form.is_valid():
                 form.save()
-                return redirect('sammaryforteenger',username)  # Redirect to a success page
+                messages.success(request, 'summary sent successfully!')
+            else:
+                return redirect('sammaryforteenger', username)
+
     context = {'form': form}
     return render(request, 'ourapp/send_sammary_to_teen.html', context)
 

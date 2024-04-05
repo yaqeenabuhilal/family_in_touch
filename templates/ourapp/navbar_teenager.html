@@ -8,8 +8,9 @@
       <div class="dropdown">
       <span> Feedbacks</span>
           <div class="dropdown-content">
-           <a href="#">Resevie Feedback</a>
-           <a href="#">Send Feedback</a>
+           <a href="{% url 'sammaryforteenger' %}">Resevie Feedback</a>
+           <a href="{% url 'sammaryforteenger' teenger_id=username %}">Send Feedback</a>
+              
               </div>
         </div>
   </li>
