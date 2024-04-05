@@ -44,7 +44,9 @@ urlpatterns = [
     path('About/', views.About, name='About'),
     path('contact_parent/', views.contact_parent, name='contact_parent'),
     path('contact_teens/', views.contact_teens, name='contact_teens'),
-    path('logout/', views.logout, name='logout'),
+    path('logout_parent/', views.logout_parent, name='logout_parent'),
+    path('logout_teens/',views.logout_teens,name='logout_teens'),
+    path('logout_psy/',views.logout_psy, name='logout_psy'),
 
 
     path('choicelinktopic_teenageer/',views.choicelinktopic_teenager, name='choicelinktopic_teenageer'),

@@ -10,8 +10,8 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import Group
 from .models import *
-from itertools import count, repeat,chain
-from .forms import CreateUserForm,profileupdateform, UpdateUserForm
+from itertools import count, repeat, chain
+from .forms import CreateUserForm, profileupdateform, UpdateUserForm
 from django.contrib.auth.models import User
 from .models import profile
 from ourapp.models import profile
@@ -33,7 +33,7 @@ from django.shortcuts import render
 from .models import Lecture
 
 from .forms import TeengerFeedbackForm
-from .forms import ParentFeedbackForm,updateTeengersammaryForm,updateparentsammaryForm
+from .forms import ParentFeedbackForm, updateTeengersammaryForm, updateparentsammaryForm
 from .forms import CreateParentFeedbackForm
 from .forms import CreatTeengerFeedbackForm
 from datetime import datetime
@@ -161,7 +161,7 @@ def login_psy(request):
             else:
                 messages.info(request, 'username OR password incorrert')
         else:
-                messages.info(request, 'username OR password incorrert')
+            messages.info(request, 'username OR password incorrert')
     context = {}
     return render(request, 'ourapp/login_psy.html', context)
 
@@ -429,9 +429,6 @@ def sammaryforparent(request, parent_id):
     return render(request, 'ourapp/sammaryforparent.html', {'parent_feedback': parent_feedback, 'parent': parent})
 
 
-# user=User.objects.get(username=pk)
-# Add default value None for parent_id
-
 def sammaryforteenger(request, teenger_id):
     # Get the teenger object or return 404 if not found
     teenger = get_object_or_404(User, username=teenger_id)
@@ -605,11 +602,21 @@ def contact_parent(request):
     return render(request, 'ourapp/contact_parent.html')
 
 
-def logout(request):
+def logout_view(request):
     logout(request)
     return redirect('official_homepage')
 
 
+def logout_parent(request):
+    return render(request, 'ourapp/logout_parent.html')
+
+
+def logout_teens(request):
+    return render(request, 'ourapp/logout_teens.html')
+
+
+def logout_psy(request):
+    return render(request, 'ourapp/logout_psy.html')
 
 
 def error_parent(request):
