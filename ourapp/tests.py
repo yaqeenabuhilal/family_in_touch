@@ -101,3 +101,7 @@ class TestHomepageParent(TestCase):
         response = self.client.get(reverse('homepage_parent'))
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, 'ourapp/homepage_parent.html')
+
+
+
+

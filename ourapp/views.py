@@ -403,25 +403,41 @@ def thank_you_page(request):
     return render(request, 'ourapp/thank_you_page.html')
 
 
-def sammaryforparent(request, parent_id=None):  # Add default value None for parent_id
+def sammaryforparent1(request, parent_id):  # Add default value None for parent_id
+    parent = get_object_or_404(User, username=parent_id)
+
+    # Fetch feedback related to the specified teenger
+    parent_feedback = ParentFeedback.objects.filter(Parents=parent)
+
+    return render(request, 'ourapp/sammaryforparent.html', {'parent_feedback': parent_feedback, 'parent': parent})
+    # user=User.objects.get(username=pk)
+    # 	order = user.order_set.all()
     if parent_id:
         # Get the parent object or return 404 if not found
         parent = get_object_or_404(User, username=parent_id)
         # Fetch feedback related to the specified parent
-        parent_feedback = ParentFeedback.objects.filter(Parents=parent)
+        parent_feedback = ParentFeedback.objects.filter(Parent=parent)
     else:
         # Handle the case where parent_id is not provided
         parent = None
         parent_feedback = None
     return render(request, 'ourapp/sammaryforparent.html', {'parent_feedback': parent_feedback, 'parent': parent})
 
+def sammaryforparent(request, parent_id):
+    parent = get_object_or_404(User, username=parent_id)
+    parent_feedback = ParentFeedback.objects.filter(Parents=parent)
+    return render(request, 'ourapp/sammaryforparent.html', {'parent_feedback': parent_feedback, 'parent': parent})
+
+
+# user=User.objects.get(username=pk)
+# Add default value None for parent_id
 
 def sammaryforteenger(request, teenger_id):
     # Get the teenger object or return 404 if not found
     teenger = get_object_or_404(User, username=teenger_id)
 
     # Fetch feedback related to the specified teenger
-    teenger_feedback = TeengerFeedback.objects.filter(Teengers=teenger)
+    teenger_feedback = TeengerFeedback.objects.filter(Teenger=teenger)
 
     return render(request, 'ourapp/sammaryforteenger.html', {'teenger_feedback': teenger_feedback, 'teenger': teenger})
 # user=User.objects.get(username=pk)

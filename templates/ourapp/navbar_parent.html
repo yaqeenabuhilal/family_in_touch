@@ -11,7 +11,7 @@
       <div class="dropdown">
       <span> Feedbacks</span>
           <div class="dropdown-content">
-           <a href="{% url 'sammaryforparent' %}">Resevie Feedback</a>
+           <a href="{% url 'sammaryforparent' parent_id=user.username %}">Resevie Feedback</a>
            <a href="{% url 'feedback_parent' %}">Send Feedback</a>
               </div>
         </div>
