@@ -11,13 +11,15 @@ from django.contrib.auth import authenticate, login
 from django.test import TestCase, Client
 from django.contrib.auth.models import User, Group
 from django.urls import reverse
-from ourapp.views import error_parent, error_teenger, contact_teens
+from ourapp.views import error_parent, contact_teens
 from ourapp.models import TeengerFeedback
 from django.contrib.messages.storage.fallback import FallbackStorage
 from django.contrib import messages
 from .models import TeengerFeedback
 from .views import add_teenger_feedback
 from .forms import CreatTeengerFeedbackForm
+from .forms import ParentFeedbackForm
+from .forms import CreateParentFeedbackForm
 from ourapp.models import TeengerFeedback
 from ourapp.views import view_list_of_teenger
 from django.test import TestCase, RequestFactory
@@ -26,6 +28,7 @@ from datetime import datetime
 from . import views
 from ourapp.views import add_send_sammary_to_parent
 from unittest.mock import patch
+
 from .models import ParentFeedback
 from .forms import updateparentsammaryForm
 from django.test import Client
@@ -33,9 +36,6 @@ from django.shortcuts import get_object_or_404
 from .models import Lecture
 from django.conf import settings
 from .views import choicelinktopic_teenager, choicelinktopic_parent
-from django.template.response import TemplateResponse
-from ourapp.forms import CreateParentFeedbackForm
-
 
 class ProfileTestCase(TestCase):
     def setUp(self):
@@ -98,6 +98,7 @@ class TestLoginParent(TestCase):
         response = self.client.post(reverse('loginParent'), {'username': 'non_parent_user', 'password': 'testpassword'})
         self.assertEqual(response.status_code, 200)  # Should stay on the login page
         self.assertContains(response, 'username OR password incorrert')
+
 class TestHomepageTeenager(TestCase):
     def setUp(self):
         self.client = Client()
@@ -106,6 +107,7 @@ class TestHomepageTeenager(TestCase):
         response = self.client.get(reverse('homepage_teenager'))
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, 'ourapp/homepage_teenager.html')
+
 class TestNavbarTeenager(TestCase):
     def setUp(self):
         self.client = Client()
@@ -114,6 +116,7 @@ class TestNavbarTeenager(TestCase):
         response = self.client.get(reverse('navbar_teenager'))
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, 'ourapp/navbar_teenager.html')
+
 class TestHomepageParent(TestCase):
     def setUp(self):
         self.client = Client()
@@ -122,7 +125,6 @@ class TestHomepageParent(TestCase):
         response = self.client.get(reverse('homepage_parent'))
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, 'ourapp/homepage_parent.html')
-
 ##########################################################
 
 class TestLoginTeenager(TestCase):
@@ -271,44 +273,6 @@ class TestPostLinks(TestCase):
         }
         response = self.client.post(reverse('post_b_ch_ten'), data)
         self.assertEqual(response.status_code, 302)
-# # class ErrorParentViewTest(TestCase):
-# #     def setUp(self):
-# #         self.factory = RequestFactory()
-#
-#     def test_error_parent_view(self):
-#         request = self.factory.get('error_parent')
-#         response = error_parent(request)
-#         self.assertIsInstance(response, TemplateResponse)
-#         self.assertEqual(response.template_name, 'ourapp/error_parent.html')
-
-
-class TestErrorTeenagerView(TestCase):
-    def setUp(self):
-        self.factory = RequestFactory()
-
-    def test_error_teenager_view(self):
-        request = self.factory.get('error_teenager')
-        response = error_teenger(request)
-        self.assertEqual(response.status_code, 200)
-
-
-# class AboutPageTest(TestCase):
-#     def test_about_page_returns_correct_template(self):
-#         response = self.client.get(reverse('about'))
-#         self.assertEqual(response.status_code, 200)
-#         self.assertTemplateUsed(response, 'ourapp/About.html')
-
-
-class TestContactTeensView(TestCase):
-    def setUp(self):
-        self.factory = RequestFactory()
-
-    def test_contact_teens_view(self):
-        request = self.factory.get('/contact_teens/')
-        response = contact_teens(request)
-        self.assertIsInstance(response, TemplateResponse)
-        self.assertEqual(response.status_code, 200)
-        self.assertEqual(response.template_name[0], 'ourapp/contact_teens.html')
     def test_post_b_ch_par(self):
         data = {
             'link': 'https://example.com',
@@ -332,6 +296,45 @@ class TestContactTeensView(TestCase):
         }
         response = self.client.post(reverse('post_t_m_par'), data)
         self.assertEqual(response.status_code, 302)
+
+class ErrorParentViewTest(TestCase):
+    def setUp(self):
+        self.factory = RequestFactory()
+
+    def test_error_parent_view(self):
+        request = self.factory.get('error_parent')
+        response = error_parent(request)
+        self.assertIsInstance(response, TemplateResponse)
+        self.assertEqual(response.template_name, 'ourapp/error_parent.html')
+
+
+class TestErrorTeenagerView(TestCase):
+    def setUp(self):
+        self.factory = RequestFactory()
+
+    def test_error_teenager_view(self):
+        request = self.factory.get('error_teenager')
+        response = error_teenager(request)
+        self.assertEqual(response.status_code, 200)
+
+
+class AboutPageTest(TestCase):
+    def test_about_page_returns_correct_template(self):
+        response = self.client.get(reverse('about'))
+        self.assertEqual(response.status_code, 200)
+        self.assertTemplateUsed(response, 'ourapp/About.html')
+
+
+class TestContactTeensView(TestCase):
+    def setUp(self):
+        self.factory = RequestFactory()
+
+    def test_contact_teens_view(self):
+        request = self.factory.get('/contact_teens/')
+        response = contact_teens(request)
+        self.assertIsInstance(response, TemplateResponse)
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response.template_name[0], 'ourapp/contact_teens.html')
 
 class Test_view_links_psy(TestCase):
     def test_view_links_psy_par(self):
