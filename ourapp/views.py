@@ -51,12 +51,15 @@ from ourapp.models import ParentFeedback
 # def feedback_teenger(request):
 #     return render(request,'ourapp/feedback_teenger.html')
 
-def feedback_psy_teenger(request):
-    feedback_psy_teenger=TeengerFeedback.objects.all()
 
-    return render(request,'ourapp/feedback_psy_teenger.html',{'feedback_psy_teenger':feedback_psy_teenger})
+def feedback_psy_teenger(request):
+    feedback_psy_teenger = TeengerFeedback.objects.all()
+
+    return render(request, 'ourapp/feedback_psy_teenger.html', {'feedback_psy_teenger': feedback_psy_teenger})
+
+
 def feedback_psy_parent(request):
-    feedback_psy_parent=ParentFeedback.objects.all()
+    feedback_psy_parent = ParentFeedback.objects.all()
 
     return render(request,'ourapp/feedback_psy_parent.html',{'feedback_psy_parent':feedback_psy_parent})
 # def summary_psy(request):
@@ -65,6 +68,16 @@ def feedback_psy_parent(request):
 #
 # def drop_down_list_psy(request):
 #     return render(request,'ourapp/drop_down_list_psy.html')
+    return render(request, 'ourapp/feedback_psy_parent.html', {'feedback_psy_parent': feedback_psy_parent})
+
+
+def summary_psy(request):
+    return render(request, 'ourapp/summary_psy.html')
+
+
+def drop_down_list_psy(request):
+    return render(request, 'ourapp/drop_down_list_psy.html')
+
 
 
 # def feedback(request):
@@ -80,7 +93,14 @@ def feedback_psy_parent(request):
 #     return render(request,'ourapp/testerforfeed.html')
 #
 
+def link(request):
+    return render(request, 'ourapp/link.html')
 
+    return render(request, 'ourapp/link.html')
+
+
+def testerforfeed(request):
+    return render(request, 'ourapp/testerforfeed.html')
 
 
 def loginTeenager(request):
@@ -98,7 +118,7 @@ def loginTeenager(request):
         else:
             messages.info(request, 'username OR password incorrert')
     context = {}
-    return  render(request,'ourapp/login.html',context)
+    return render(request, 'ourapp/login.html', context)
 
 
 
@@ -115,6 +135,7 @@ def loginTeenager(request):
 
 # def test_addfeedbackteen(request):
 #     return render(request,'ourapp/test_addfeedbackteen.html')
+
 
 def singupteenager(request):
     form = CreateUserForm()
@@ -146,7 +167,9 @@ def loginParent(request):
         else:
             messages.info(request, 'username OR password incorrert')
     context = {}
-    return render(request,'ourapp/log _in _parent.html',context)
+    return render(request, 'ourapp/log _in _parent.html', context)
+
+
 def login_psy(request):
     if request.method == 'POST':
         username = request.POST.get('username')
@@ -165,6 +188,7 @@ def login_psy(request):
     context = {}
     return render(request, 'ourapp/login_psy.html', context)
 
+
 def sign_up_parent(request):
     form = CreateUserForm()
     if request.method == 'POST':
@@ -179,10 +203,15 @@ def sign_up_parent(request):
     context = {'form': form}
     return render(request, 'ourapp/sign_up_parent.html', context)
 
+
 def navbarforpsy(request):
     return render(request, 'ourapp/navbarforpsy.html')
+
+
 def homepageforpsy(request):
     return render(request, 'ourapp/homepageforpsy.html')
+
+
 def homepage_parent(request):
     return render(request, 'ourapp/homepage_parent.html')
 def homepage_teenager(request):
@@ -425,7 +454,7 @@ def thank_you_page(request):
 
 def sammaryforparent(request, parent_id):
     parent = get_object_or_404(User, username=parent_id)
-    parent_feedback = ParentFeedback.objects.filter(Parents=parent)
+    parent_feedback = ParentFeedback.objects.filter(parent=parent)
     return render(request, 'ourapp/sammaryforparent.html', {'parent_feedback': parent_feedback, 'parent': parent})
 
 
@@ -621,5 +650,6 @@ def logout_psy(request):
 
 def error_parent(request):
     return render(request, 'ourapp/error_parent.html')
-def error_teenger(request):
-    return render(request, 'ourapp/error_teenger.html')
+
+#def error_teenger(request):
+   # return render(request, 'ourapp/error_teenger.html')

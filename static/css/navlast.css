@@ -83,28 +83,35 @@ li.slider {
   z-index: 8;
   transition: left 0.4s, background-color 0.4s;
 }
-.menu li:nth-child(1):hover ~ .slider,
-.menu li:nth-child(1):focus ~ .slider,
-.menu li:nth-child(1):active ~ .slider {
+.menu li:nth-child(0):hover ~ .slider,
+.menu li:nth-child(0):focus ~ .slider,
+.menu li:nth-child(0):active ~ .slider {
   left: 0;
   background-color: #D3D3D3;
 }
-.menu li:nth-child(2):hover ~ .slider,
-.menu li:nth-child(2):focus ~ .slider,
-.menu li:nth-child(2):active ~ .slider {
+/*.menu li:nth-child(1):hover ~ .slider,*/
+.menu li:nth-child(1):focus ~ .slider,
+.menu li:nth-child(1):active ~ .slider {
   left: 25%;
   background-color: #D3D3D3;
 }
 /*.menu li:nth-child(3):hover ~ .slider,*/
-.menu li:nth-child(3):focus ~ .slider,
-.menu li:nth-child(3):active ~ .slider {
+.menu li:nth-child(2):focus ~ .slider,
+.menu li:nth-child(2):active ~ .slider {
   left: 50%;
   background-color: #D3D3D3;
 }
 /*.menu li:nth-child(4):hover ~ .slider,*/
+.menu li:nth-child(3):focus ~ .slider,
+.menu li:nth-child(3):active ~ .slider {
+  left: 75%;
+  background-color: #D3D3D3;
+}
+
+/*.menu li:nth-child(4):hover ~ .slider,*/
 .menu li:nth-child(4):focus ~ .slider,
 .menu li:nth-child(4):active ~ .slider {
-  left: 75%;
+  left: 100%;
   background-color: #D3D3D3;
 }
 /*/////////////////////////////*/
