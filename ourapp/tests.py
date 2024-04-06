@@ -201,7 +201,7 @@ class TestAddParentFeedbackView(TestCase):
     def assertMessageContains(self, response, message_text):
         storage = messages.get_messages(response.wsgi_request)
         self.assertIn(message_text, [m.message for m in storage])
-#####################################################
+####################################################
 class TestAddSendSummaryToParent(TestCase):
     def setUp(self):
         self.user = User.objects.create_user(username='test_user', password='password')
