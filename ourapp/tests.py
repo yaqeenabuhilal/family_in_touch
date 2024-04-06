@@ -35,7 +35,6 @@ from django.conf import settings
 from .views import choicelinktopic_teenager, choicelinktopic_parent
 
 
-
 class ProfileTestCase(TestCase):
     def setUp(self):
         self.user = User.objects.create_user(username='testuser', email='test@example.com', password='testpassword')
@@ -124,8 +123,6 @@ class TestHomepageParent(TestCase):
         response = self.client.get(reverse('homepage_parent'))
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, 'ourapp/homepage_parent.html')
-
-
 ##########################################################
 
 class TestLoginTeenager(TestCase):
