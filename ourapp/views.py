@@ -651,5 +651,5 @@ def logout_psy(request):
 def error_parent(request):
     return render(request, 'ourapp/error_parent.html')
 
-#def error_teenger(request):
-   # return render(request, 'ourapp/error_teenger.html')
+def error_teenger(request):
+   return render(request, 'ourapp/error_teenger.html')

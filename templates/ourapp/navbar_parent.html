@@ -1,28 +1,28 @@
 {% load static %}
-    <link rel="stylesheet" type="text/css" href="{% static '/css/test.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static '/css/test.css' %}">
 <ul class="menu">
 
 
-
-  <li><a href="{% url 'homepage_parent' %}">MyHomePage</a></li>
+    <li><a href="{% url 'homepage_parent' %}">MyHomePage</a></li>
 
     <li>
         <div class="dropdown">
             <span>Profile</span>
             <div class="dropdown-content">
-                <a href="{% url 'profileforteenager' %}">profile</a>
+                <a href="{% url 'profileforparent' %}">profile</a>
                 <a href="{% url 'logout_parent' %}">logout</a>
             </div>
         </div>
     </li>
     <li><a href="{% url 'choicelinktopic_parent' %}">Courses</a></li>
     <li>
-      <div class="dropdown">
-      <span> Feedbacks</span>
-          <div class="dropdown-content">
-           <a href="{% url 'sammaryforparent' parent_id=user.username %}">Resevie Feedback</a>
-           <a href="{% url 'feedback_parent' %}">Send Feedback</a>
-              </div>
+        <div class="dropdown">
+            <span> Feedbacks</span>
+            <div class="dropdown-content">
+                {% if user.username %}
+                    <a href="{% url 'sammaryforparent' parent_id=user.username %}">Resevie Feedback</a>
+                {% endif %}           <a href="{% url 'feedback_parent' %}">Send Feedback</a>
+            </div>
         </div>
-  </li>
+    </li>
 </ul>

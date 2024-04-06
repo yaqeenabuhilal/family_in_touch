@@ -1,0 +1,129 @@
+{% load crispy_forms_tags %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+{#    <link rel="stylesheet" type="text/css" href="{% static 'ourapp/main.css' %}">#}
+    <title>Admin Profile</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .profile {
+            text-align: center;
+        }
+
+        .profile img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            margin-bottom: 20px;
+        }
+
+        .profile h1 {
+            margin-bottom: 10px;
+        }
+
+        .profile-info {
+            margin-bottom: 30px;
+        }
+
+        .profile-info h2 {
+            margin-bottom: 5px;
+        }
+
+        .update-form {
+            text-align: left;
+        }
+
+        .update-form label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .update-form input {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+        }
+
+        .update-form button {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .update-form button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+<div class="container">
+    <div class="profile">
+        <h1>Psycholog Profile</h1>
+        <div class="profile-info">
+            <tr>
+                <td>
+            <img src="{{ request.user.profile.image.url }}" alt="Profile Image">
+                    </td>
+                <td>
+            <h2>{{ user.username }}</h2>
+            <p>Email: {{ user.email }}</p>
+            <!-- Add more profile information here -->
+        </div>
+        <div class="update-form">
+            <h2>Update Profile</h2>
+            <form method="POST"  enctype="multipart/form-data">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <input type="file" id="profile img" name="profile img"><br>
+                {{ p_form}}
+                <label for="first_name">First Name:</label>
+                <input type="text" id="first_name" name="first_name" value="{{ user.first_name }}"><br>
+                <label for="last_name">Last Name:</label>
+                <input type="text" id="last_name" name="last_name" value="{{ user.last_name }}"><br>
+                <label for="username">User Name:</label>
+                <input type="text" id="username" name="username" value="{{ user.username }}"><br>
+                <label for="email">Email:</label>
+                <input type="text" id="email" name="email" value="{{ user.email }}"><br>
+
+
+                <!-- Add more fields for updating profile information -->
+                <button type="submit">Save Changes</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
