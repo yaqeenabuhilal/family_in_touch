@@ -425,7 +425,7 @@ def thank_you_page(request):
 
 def sammaryforparent(request, parent_id):
     parent = get_object_or_404(User, username=parent_id)
-    parent_feedback = ParentFeedback.objects.filter(Parents=parent)
+    parent_feedback = ParentFeedback.objects.filter(parent=parent)
     return render(request, 'ourapp/sammaryforparent.html', {'parent_feedback': parent_feedback, 'parent': parent})
 
 

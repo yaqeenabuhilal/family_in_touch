@@ -165,45 +165,29 @@ class TestAddParentFeedbackView(TestCase):
     def setUp(self):
         self.client = Client()
         self.user = User.objects.create_user(username='test_user', password='password')
-
     def test_get_request(self):
         response = self.client.get(reverse('feedback_parent'))
         self.assertEqual(response.status_code, 200)
         self.assertIsInstance(response.context['form'], CreateParentFeedbackForm)
-
-    # def test_valid_post_request(self):
-    #     url = reverse('feedback_parent')
-    #     data = {'username': 'test_user', 'text': 'Test feedback', 'date': '2022-01-03'}
-    #     response = self.client.post(url, data)
-    #
-    #     self.assertEqual(response.status_code, 200)
-    #     self.assertTrue(ParentFeedback.objects.filter(username='test_user', text='Test feedback').exists())
-
-        # Check if success message is sent
         self.assertRedirects(response, expected_url=reverse('feedback_parent'))
         self.assertMessageCount(response, success=1)
         self.assertMessageContains(response, 'Feedback sent successfully!')
-
     def test_invalid_post_request(self):
         url = reverse('feedback_parent')
         data = {'username': 'test_user', 'text': '', 'date': '2022-01-03'}
         response = self.client.post(url, data)
         self.assertEqual(response.status_code, 302)  # Should redirect to 'error_parent'
-
     def test_existing_instance_post_request(self):
         ParentFeedback.objects.create(username='test_user', text='Test feedback', date='2022-01-03')
         url = reverse('feedback_parent')
         data = {'username': 'test_user', 'text': 'Test feedback', 'date': '2022-01-03'}
         response = self.client.post(url, data)
         self.assertEqual(response.status_code, 302)  # Should redirect to 'error_parent'
-
-    # Helper methods
     def assertMessageCount(self, response, **kwargs):
         storage = messages.get_messages(response.wsgi_request)
         for level, count in kwargs.items():
             messages_list = list(storage)
             self.assertEqual(len([m for m in messages_list if m.level_tag == level]), count)
-
     def assertMessageContains(self, response, message_text):
         storage = messages.get_messages(response.wsgi_request)
         self.assertIn(message_text, [m.message for m in storage])
@@ -213,18 +197,14 @@ class TestAddSendSummaryToParent(TestCase):
         self.user = User.objects.create_user(username='test_user', password='password')
         self.client = Client()
         self.ParentFeedback = ParentFeedback.objects.create(parent='test_user', date='2022-01-03', sammary='Initial summary')
-
     def test_add_send_sammary_to_parent(self):
         url = reverse('send_sammary_to_parent', kwargs={'username': 'test_user', 'date': self.ParentFeedback.date})
         response = self.client.get(url)
-
         # Simulate POST request
         form_data = {'sammary': 'Updated summary'}
         response = self.client.post(url, form_data)
-
         # Check if the form is saved successfully
         self.assertTrue(ParentFeedback.objects.filter(sammary='Updated summary').exists())
-
         # Check if the success message is displayed
         messages = list(response.context['messages'])
         self.assertEqual(len(messages), 1)
@@ -357,18 +337,14 @@ class TestAddSendSummaryToTeen(TestCase):
         self.user = User.objects.create_user(username='test_user', password='password')
         self.client = Client()
         self.TeengerFeedback = TeengerFeedback.objects.create(Teenger='test_user', date='2022-01-03', sammary='Initial summary')
-
     def test_add_send_sammary_to_teen(self):
         url = reverse('send_sammary_to_teen', kwargs={'username': 'test_user', 'date': self.TeengerFeedback.date})
         response = self.client.get(url)
-
         # Simulate POST request
         form_data = {'sammary': 'Updated summary'}
         response = self.client.post(url, form_data)
-
         # Check if the form is saved successfully
         self.assertTrue(TeengerFeedback.objects.filter(sammary='Updated summary').exists())
-
         # Check if the success message is displayed
         messages = list(response.context['messages'])
         self.assertEqual(len(messages), 1)
