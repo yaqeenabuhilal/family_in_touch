@@ -1,14 +1,15 @@
-{%  include 'ourapp/navbar_parent.html' %}
-<!DOCTYPE html>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <title>djangoProject10</title>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<title>djangoProject10</title>
 {% block content %}
 {% load static %}
+    {%  include 'ourapp/navbar_parent.html' %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/testt.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'css/feedback_parent.css' %}">
 <link rel="stylesheet" type="text/css" href="{% static '/css/testerforfeedbackpsyha.css' %}">
-    <html>
-<head>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <title>djangoProject10</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <link rel="stylesheet" type="text/css" href="{% static '/css/testt.css' %}">
+
 </head>
 <body>
     <style>
@@ -79,7 +80,7 @@
     </tr>
     {% empty %}
     <tr>
-      <td colspan="2">No feedback available for this teenager.</td>
+      <td colspan="2">No feedback available for this parent.</td>
     </tr>
     {% endfor %}
   </tbody>

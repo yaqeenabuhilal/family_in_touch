@@ -1,4 +1,3 @@
-
 {% block head %}
         {% include 'ourapp/navbarforpsy.html' %}
 
@@ -12,16 +11,16 @@
 
 {% block content %}
     <h1>Psychologist Links Management For Parents</h1>
-    <ul>
+    <ul style="font-size:20px">
         {% for link in links reversed %}
             {% if link.forWhom == "Time Management" or link.forWhom == "Communication Challenges For Parents" or link.forWhom == "Behavioral Challenges For Parents"  %}
           <li>
     <p><span>Domain:</span> {{ link.forWhom }}</p>
-              <br>
+
     <p><span>Description:</span> {{ link.Description }}</p>
-                <br>
+
     <p><span>Link:</span> <a href="{{ link.link }}" target="_blank">{{ link.link }}</a></p>
-                <br>
+
     <form action="{% url 'delete_link_psy_par' link.id %}" method="post">
         {% csrf_token %}
         <button type="submit">Delete</button>

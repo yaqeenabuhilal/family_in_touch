@@ -1,4 +1,4 @@
-/* Import Google Fonts */
+
 @import url('https://fonts.googleapis.com/css?family=Exo:400,700');
 @import url('https://fonts.googleapis.com/css?family=Playfair+Display&display=swap');
 
@@ -9,7 +9,6 @@
   box-sizing: border-box;
 }
 
-/* Body Styles */
 body {
   direction: rtl; /* Right-to-left text direction */
   display: flex;
@@ -33,8 +32,7 @@ h1 {
   -webkit-transition: all 0.4s ease 0s;
   -o-transition: all 0.4s ease 0s;
   transition: all 0.4s ease 0s;
-   top: 20px; /* הזזה למטה ב-10 פיקסלים */
-
+  margin-top: 90px;
 }
 
 h1 span {
@@ -50,18 +48,10 @@ h1 em {
 
 }
 
-
-
-
-
 /* List Styles */
 ul {
   list-style-type: none;
   padding: 0;
-}
-ul {
-    list-style-type: none; /* Remove default list styles */
-    padding: 0;
 }
 
 li {
@@ -109,8 +99,4 @@ li p span {
   color: rgba(0, 0, 0, 0.87); /* צבע ל-Link */
   font-size: 1em; /* גודל גופן ל-Link */
 }
-
-
-
-
 
