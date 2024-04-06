@@ -28,6 +28,12 @@ from unittest.mock import patch
 
 from .models import ParentFeedback
 from .forms import updateparentsammaryForm
+from django.test import Client
+from django.shortcuts import get_object_or_404
+from .models import Lecture
+from django.conf import settings
+from .views import choicelinktopic_teenager, choicelinktopic_parent
+
 
 
 class ProfileTestCase(TestCase):
@@ -224,6 +230,127 @@ class TestAddSendSummaryToParent(TestCase):
         self.assertEqual(len(messages), 1)
         self.assertEqual(messages[0].tags, 'success')
         self.assertEqual(messages[0].message, 'summary sent successfully!')
+
+
+
+class test_choicelinktopic_psy(TestCase):
+    def test_choicelinktopic_psy_par(self):
+        response = self.client.get(reverse('choicelinktopic_psy_par'))
+        self.assertEqual(response.status_code, 200)
+        self.assertTemplateUsed(response, 'ourapp/choicelinktopic_psy_par.html')
+
+    def test_choicelinktopic_psy_ten(self):
+        response = self.client.get(reverse('choicelinktopic_psy_ten'))
+        self.assertEqual(response.status_code, 200)
+        self.assertTemplateUsed(response, 'ourapp/choicelinktopic_psy_ten.html')
+
+class TestPostLinks(TestCase):
+    def test_post_e_s_ten(self):
+        data = {
+            'link': 'https://example.com',
+            'description': 'Example Lecture'
+        }
+        response = self.client.post(reverse('post_e_s_ten'), data)
+        self.assertEqual(response.status_code, 302)
+    def test_post_c_ch_ten(self):
+        data = {
+            'link': 'https://example.com',
+            'description': 'Example Lecture'
+        }
+        response = self.client.post(reverse('post_c_ch_ten'), data)
+        self.assertEqual(response.status_code, 302)
+    def test_post_b_ch_ten(self):
+        data = {
+            'link': 'https://example.com',
+            'description': 'Example Lecture'
+        }
+        response = self.client.post(reverse('post_b_ch_ten'), data)
+        self.assertEqual(response.status_code, 302)
+
+    def test_post_b_ch_par(self):
+        data = {
+            'link': 'https://example.com',
+            'description': 'Example Lecture'
+        }
+        response = self.client.post(reverse('post_b_ch_par'), data)
+        self.assertEqual(response.status_code, 302)
+
+    def test_post_c_ch_par(self):
+        data = {
+            'link': 'https://example.com',
+            'description': 'Example Lecture'
+        }
+        response = self.client.post(reverse('post_c_ch_par'), data)
+        self.assertEqual(response.status_code, 302)
+
+    def test_post_t_m_par(self):
+        data = {
+            'link': 'https://example.com',
+            'description': 'Example Lecture'
+        }
+        response = self.client.post(reverse('post_t_m_par'), data)
+        self.assertEqual(response.status_code, 302)
+
+class Test_view_links_psy(TestCase):
+    def test_view_links_psy_par(self):
+        response = self.client.get(reverse('view_links_psy_par'))
+        self.assertEqual(response.status_code, 200)
+        self.assertTemplateUsed(response, 'ourapp/view_links_psy_par.html')
+
+    def test_view_links_psy_ten(self):
+        response = self.client.get(reverse('view_links_psy_ten'))
+        self.assertEqual(response.status_code, 200)
+        self.assertTemplateUsed(response, 'ourapp/view_links_psy_ten.html')
+
+
+class test_thank_you_page(TestCase):
+    def test_thank_you_page(self):
+        response = self.client.get(reverse('thank_you_page'))
+        self.assertEqual(response.status_code, 200)
+        self.assertTemplateUsed(response, 'ourapp/thank_you_page.html')
+
+class test_delete_link_psy(TestCase):
+    def setUp(self):
+        self.client = Client()
+        self.user = User.objects.create(username='testuser', email='test@example.com')
+        self.client.force_login(self.user)  # Log in as a user for testing purposes
+
+    def test_delete_link_psy_par(self):
+        # Create a Lecture object to be deleted
+        link = Lecture.objects.create(forWhom='Test Link', link='http://example.com')
+        response = self.client.post(reverse('delete_link_psy_par', args=[link.id]))
+        self.assertEqual(response.status_code, 302)  # Or 200 if you modify the code in your website
+
+        # Check that the link doesn't exist anymore
+        link_exists = Lecture.objects.filter(id=link.id).exists()
+        self.assertFalse(link_exists)
+
+
+    def test_delete_link_psy_ten(self):
+        # Create a Lecture object to be deleted
+        link = Lecture.objects.create(forWhom='Test Link', link='http://example.com')
+        response = self.client.post(reverse('delete_link_psy_ten', args=[link.id]))
+        self.assertEqual(response.status_code, 302)  # Or 200 if you modify the code in your website
+
+        # Check that the link doesn't exist anymore
+        link_exists = Lecture.objects.filter(id=link.id).exists()
+        self.assertFalse(link_exists)
+
+
+class test_behavioral_challenges_ten(TestCase):
+    def setUp(self):
+        self.client = Client()
+
+class test_choicelinktopic_par(TestCase):
+    def setUp(self):
+        self.client = Client()
+
+
+
+
+
+
+
 
 class TestAddSendSummaryToTeen(TestCase):
     def setUp(self):

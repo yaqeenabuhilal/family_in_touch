@@ -1,3 +1,5 @@
+{% include 'ourapp/navbarforpsy.html' %}
+
 {% block head %}
     {% load static %}
         <title>Psychologist Links Management For Teenagers</title>
@@ -7,22 +9,19 @@
     <link href="https://fonts.googleapis.com/css?family=Raleway&display=swap" rel="stylesheet">
 {% endblock %}
 
-
-
 {% block content %}
-            {% include 'ourapp/navbarforpsy.html' %}
 
     <h1>Psychologist Links Management For Teenagers</h1>
-    <ul>
+    <ul style="font-size:20px">
         {% for link in links reversed %}
             {% if link.forWhom == "Emotional Support" or link.forWhom == "Communication Challenges For Teenagers" or link.forWhom == "Behavioral Challenges For Teenagers"  %}
           <li>
     <p><span>Domain:</span> {{ link.forWhom }}</p>
-              <br>
+
     <p><span>Description:</span> {{ link.Description }}</p>
-                <br>
+
     <p><span>Link:</span> <a href="{{ link.link }}" target="_blank">{{ link.link }}</a></p>
-                <br>
+
     <form action="{% url 'delete_link_psy_ten' link.id %}" method="post">
         {% csrf_token %}
         <button type="submit">Delete</button>
