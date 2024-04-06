@@ -1,3 +1,4 @@
+from django.template.response import TemplateResponse
 from django.test import TestCase
 from django.urls import reverse
 from django.contrib.auth.models import User
@@ -11,6 +12,7 @@ from django.contrib.auth import authenticate, login
 from django.test import TestCase, Client
 from django.contrib.auth.models import User, Group
 from django.urls import reverse
+from ourapp.views import error_parent, error_teenager, contact_teens
 
 
 class ProfileTestCase(TestCase):
@@ -103,5 +105,71 @@ class TestHomepageParent(TestCase):
         self.assertTemplateUsed(response, 'ourapp/homepage_parent.html')
 
 
+class LogoutParentTestCase(TestCase):
+    def setUp(self):
+        self.client = Client()
+    def test_logout_parent_view(self):
+        response = self.client.get(reverse('logout_parent'))
+        self.assertEqual(response.status_code, 200)
+        self.assertTemplateUsed(response, 'ourapp/logout_parent.html')
 
 
+
+
+class LogoutTeenagesTestCase(TestCase):
+    def setUp(self):
+        self.client = Client()
+    def test_logout_teenagers_view(self):
+        response = self.client.get(reverse('logout_teens'))
+        self.assertEqual(response.status_code, 200)
+        self.assertTemplateUsed(response, 'ourapp/logout_teens.html')
+
+
+
+class LogoutPsychologistTestCase(TestCase):
+    def setUp(self):
+        self.client = Client()
+    def test_logout_psychologist_view(self):
+        response = self.client.get(reverse('logout_psy'))
+        self.assertEqual(response.status_code, 200)
+        self.assertTemplateUsed(response, 'ourapp/logout_psy.html')
+
+
+class ErrorParentViewTest(TestCase):
+    def setUp(self):
+        self.factory = RequestFactory()
+
+    def test_error_parent_view(self):
+        request = self.factory.get('error_parent')
+        response = error_parent(request)
+        self.assertIsInstance(response, TemplateResponse)
+        self.assertEqual(response.template_name, 'ourapp/error_parent.html')
+
+
+class TestErrorTeenagerView(TestCase):
+    def setUp(self):
+        self.factory = RequestFactory()
+
+    def test_error_teenager_view(self):
+        request = self.factory.get('error_teenager')
+        response = error_teenager(request)
+        self.assertEqual(response.status_code, 200)
+
+
+class AboutPageTest(TestCase):
+    def test_about_page_returns_correct_template(self):
+        response = self.client.get(reverse('about'))
+        self.assertEqual(response.status_code, 200)
+        self.assertTemplateUsed(response, 'ourapp/About.html')
+
+
+class TestContactTeensView(TestCase):
+    def setUp(self):
+        self.factory = RequestFactory()
+
+    def test_contact_teens_view(self):
+        request = self.factory.get('/contact_teens/')
+        response = contact_teens(request)
+        self.assertIsInstance(response, TemplateResponse)
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response.template_name[0], 'ourapp/contact_teens.html')

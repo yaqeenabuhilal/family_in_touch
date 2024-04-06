@@ -78,7 +78,7 @@ urlpatterns = [
 
     path('thank_you_page/', views.thank_you_page, name='thank_you_page'),
     path('error_parent/', views.error_parent, name='error_parent'),
-    path('error_teenger/', views.error_teenger, name='error_teenger'),
+    path('error_teenger/', views.error_teenager, name='error_teenger'),
 
 
 

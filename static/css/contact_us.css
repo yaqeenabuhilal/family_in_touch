@@ -1,14 +1,14 @@
-{% static load%}
+{% static load %}
 body {
     font-family:'PT Sans', sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #f8f8f8;
+    background-color: rgba(211, 211, 211, 0.83);
     color: #333;
     line-height: 1.6;
 }
 header {
-    color: #fff;
+    color: #dabb77;
     padding: 20px 0;
     text-align: center;
 }
@@ -25,8 +25,8 @@ p {
     margin-bottom: 20px;
 }
 .backgroung{
+    background-color: #D3BB9EE2; /* Added background color */
     background-image: url('static/images/rtyuio.jpg');
     background-size: cover; /* This ensures the image covers the entire background */
     background-position: center;
 }
-
