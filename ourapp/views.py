@@ -37,7 +37,7 @@ from .forms import ParentFeedbackForm, updateTeengersammaryForm, updateparentsam
 from .forms import CreateParentFeedbackForm
 from .forms import CreatTeengerFeedbackForm
 from datetime import datetime
-
+from ourapp.models import ParentFeedback
 
 
 
