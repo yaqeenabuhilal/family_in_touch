@@ -1,3 +1,4 @@
+from django.template.response import TemplateResponse
 from django.test import TestCase
 from django.urls import reverse
 from django.contrib.auth.models import User
@@ -37,6 +38,7 @@ from .models import Lecture
 from django.conf import settings
 from .views import choicelinktopic_teenager, choicelinktopic_parent
 
+
 class ProfileTestCase(TestCase):
     def setUp(self):
         self.user = User.objects.create_user(username='testuser', email='test@example.com', password='testpassword')
@@ -60,6 +62,7 @@ class ProfileTestCase(TestCase):
         self.assertIsInstance(response.context['u_form'], UpdateUserForm)
         self.assertIsInstance(response.context['p_form'], profileupdateform)
 
+
 class NavbarForPsyTestCase(TestCase):
     def test_navbarforpsy_view(self):
         response = self.client.get(reverse('navbarforpsy'))
@@ -67,6 +70,7 @@ class NavbarForPsyTestCase(TestCase):
         self.assertEqual(response.status_code, 200)
 
         self.assertTemplateUsed(response, 'ourapp/navbarforpsy.html')
+
 
 class HomepageForPsyTestCase(TestCase):
     def test_homepageforpsy_view(self):
@@ -89,7 +93,8 @@ class TestLoginParent(TestCase):
         self.assertEqual(response.status_code, 302)  # Should redirect to homepage_parent
 
     def test_login_unsuccessful(self):
-        response = self.client.post(reverse('loginParent'), {'username': 'incorrect_username', 'password': 'incorrect_password'})
+        response = self.client.post(reverse('loginParent'),
+                                    {'username': 'incorrect_username', 'password': 'incorrect_password'})
         self.assertEqual(response.status_code, 200)  # Should stay on the login page
         self.assertContains(response, 'username OR password incorrert')
 
@@ -98,6 +103,7 @@ class TestLoginParent(TestCase):
         response = self.client.post(reverse('loginParent'), {'username': 'non_parent_user', 'password': 'testpassword'})
         self.assertEqual(response.status_code, 200)  # Should stay on the login page
         self.assertContains(response, 'username OR password incorrert')
+
 
 class TestHomepageTeenager(TestCase):
     def setUp(self):
@@ -108,6 +114,7 @@ class TestHomepageTeenager(TestCase):
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, 'ourapp/homepage_teenager.html')
 
+
 class TestNavbarTeenager(TestCase):
     def setUp(self):
         self.client = Client()
@@ -117,6 +124,7 @@ class TestNavbarTeenager(TestCase):
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, 'ourapp/navbar_teenager.html')
 
+
 class TestHomepageParent(TestCase):
     def setUp(self):
         self.client = Client()
@@ -125,6 +133,8 @@ class TestHomepageParent(TestCase):
         response = self.client.get(reverse('homepage_parent'))
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, 'ourapp/homepage_parent.html')
+
+
 ##########################################################
 
 class TestLoginTeenager(TestCase):
@@ -142,7 +152,6 @@ class TestLoginTeenager(TestCase):
         self.assertContains(response, 'username OR password incorrert')
 
 
-
 #############################################
 class Testsingupteenager(TestCase):
     def setUp(self):
@@ -155,8 +164,10 @@ class Testsingupteenager(TestCase):
         else:
             group = Group.objects.get(name='Teengers')
             group.user_set.add(self.user)
+
     def test_signup_invalid_form(self):
-        response = self.client.post(self.url,{'username': '', 'password1': 'test_password123', 'password2': 'test_password123'})
+        response = self.client.post(self.url,
+                                    {'username': '', 'password1': 'test_password123', 'password2': 'test_password123'})
         self.assertContains(response, 'This field is required.')
 
 
@@ -164,6 +175,7 @@ class TestAddParentFeedbackView(TestCase):
     def setUp(self):
         self.client = Client()
         self.user = User.objects.create_user(username='test_user', password='password')
+
     def test_get_request(self):
         response = self.client.get(reverse('feedback_parent'))
         self.assertEqual(response.status_code, 200)
@@ -171,31 +183,39 @@ class TestAddParentFeedbackView(TestCase):
         self.assertRedirects(response, expected_url=reverse('feedback_parent'))
         self.assertMessageCount(response, success=1)
         self.assertMessageContains(response, 'Feedback sent successfully!')
+
     def test_invalid_post_request(self):
         url = reverse('feedback_parent')
         data = {'username': 'test_user', 'text': '', 'date': '2022-01-03'}
         response = self.client.post(url, data)
         self.assertEqual(response.status_code, 302)  # Should redirect to 'error_parent'
+
     def test_existing_instance_post_request(self):
         ParentFeedback.objects.create(username='test_user', text='Test feedback', date='2022-01-03')
         url = reverse('feedback_parent')
         data = {'username': 'test_user', 'text': 'Test feedback', 'date': '2022-01-03'}
         response = self.client.post(url, data)
         self.assertEqual(response.status_code, 302)  # Should redirect to 'error_parent'
+
     def assertMessageCount(self, response, **kwargs):
         storage = messages.get_messages(response.wsgi_request)
         for level, count in kwargs.items():
             messages_list = list(storage)
             self.assertEqual(len([m for m in messages_list if m.level_tag == level]), count)
+
     def assertMessageContains(self, response, message_text):
         storage = messages.get_messages(response.wsgi_request)
         self.assertIn(message_text, [m.message for m in storage])
+
+
 ####################################################
 class TestAddSendSummaryToParent(TestCase):
     def setUp(self):
         self.user = User.objects.create_user(username='test_user', password='password')
         self.client = Client()
-        self.ParentFeedback = ParentFeedback.objects.create(parent='test_user', date='2022-01-03', sammary='Initial summary')
+        self.ParentFeedback = ParentFeedback.objects.create(parent='test_user', date='2022-01-03',
+                                                            sammary='Initial summary')
+
     def test_add_send_sammary_to_parent(self):
         url = reverse('send_sammary_to_parent', kwargs={'username': 'test_user', 'date': self.ParentFeedback.date})
         response = self.client.get(url)
@@ -211,35 +231,36 @@ class TestAddSendSummaryToParent(TestCase):
         self.assertEqual(messages[0].message, 'summary sent successfully!')
 
 
-
 class LogoutParentTestCase(TestCase):
     def setUp(self):
         self.client = Client()
+
     def test_logout_parent_view(self):
         response = self.client.get(reverse('logout_parent'))
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, 'ourapp/logout_parent.html')
 
 
-
-
 class LogoutTeenagesTestCase(TestCase):
     def setUp(self):
         self.client = Client()
+
     def test_logout_teenagers_view(self):
         response = self.client.get(reverse('logout_teens'))
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, 'ourapp/logout_teens.html')
 
 
-
 class LogoutPsychologistTestCase(TestCase):
     def setUp(self):
         self.client = Client()
+
     def test_logout_psychologist_view(self):
         response = self.client.get(reverse('logout_psy'))
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, 'ourapp/logout_psy.html')
+
+
 class test_choicelinktopic_psy(TestCase):
     def test_choicelinktopic_psy_par(self):
         response = self.client.get(reverse('choicelinktopic_psy_par'))
@@ -251,6 +272,7 @@ class test_choicelinktopic_psy(TestCase):
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, 'ourapp/choicelinktopic_psy_ten.html')
 
+
 class TestPostLinks(TestCase):
     def test_post_e_s_ten(self):
         data = {
@@ -259,6 +281,7 @@ class TestPostLinks(TestCase):
         }
         response = self.client.post(reverse('post_e_s_ten'), data)
         self.assertEqual(response.status_code, 302)
+
     def test_post_c_ch_ten(self):
         data = {
             'link': 'https://example.com',
@@ -266,6 +289,7 @@ class TestPostLinks(TestCase):
         }
         response = self.client.post(reverse('post_c_ch_ten'), data)
         self.assertEqual(response.status_code, 302)
+
     def test_post_b_ch_ten(self):
         data = {
             'link': 'https://example.com',
@@ -273,6 +297,7 @@ class TestPostLinks(TestCase):
         }
         response = self.client.post(reverse('post_b_ch_ten'), data)
         self.assertEqual(response.status_code, 302)
+
     def test_post_b_ch_par(self):
         data = {
             'link': 'https://example.com',
@@ -297,44 +322,45 @@ class TestPostLinks(TestCase):
         response = self.client.post(reverse('post_t_m_par'), data)
         self.assertEqual(response.status_code, 302)
 
-class ErrorParentViewTest(TestCase):
-    def setUp(self):
-        self.factory = RequestFactory()
-
-    def test_error_parent_view(self):
-        request = self.factory.get('error_parent')
-        response = error_parent(request)
-        self.assertIsInstance(response, TemplateResponse)
-        self.assertEqual(response.template_name, 'ourapp/error_parent.html')
-
 
 class TestErrorTeenagerView(TestCase):
     def setUp(self):
-        self.factory = RequestFactory()
+        self.client = Client()
 
-    def test_error_teenager_view(self):
-        request = self.factory.get('error_teenager')
-        response = error_teenager(request)
+    def test_contact_teens_view(self):
+        response = self.client.get(reverse('contact_parent'))
         self.assertEqual(response.status_code, 200)
+        self.assertTemplateUsed(response, 'ourapp/contact_parent.html')
+
+class TestErrorTeenagerView(TestCase):
+    def setUp(self):
+        self.client = Client()
+
+    def test_contact_teens_view(self):
+        response = self.client.get(reverse('error_teenger'))
+        self.assertEqual(response.status_code, 200)
+        self.assertTemplateUsed(response, 'ourapp/error_teenger.html')
 
 
 class AboutPageTest(TestCase):
-    def test_about_page_returns_correct_template(self):
-        response = self.client.get(reverse('about'))
+    def setUp(self):
+        self.client = Client()
+
+    def test_contact_teens_view(self):
+        response = self.client.get(reverse('About'))
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, 'ourapp/About.html')
 
 
-class TestContactTeensView(TestCase):
+class ContactTeensViewTest(TestCase):
     def setUp(self):
-        self.factory = RequestFactory()
+        self.client = Client()
 
     def test_contact_teens_view(self):
-        request = self.factory.get('/contact_teens/')
-        response = contact_teens(request)
-        self.assertIsInstance(response, TemplateResponse)
+        response = self.client.get(reverse('contact_teens'))
         self.assertEqual(response.status_code, 200)
-        self.assertEqual(response.template_name[0], 'ourapp/contact_teens.html')
+        self.assertTemplateUsed(response, 'ourapp/contact_teens.html')
+
 
 class Test_view_links_psy(TestCase):
     def test_view_links_psy_par(self):
@@ -354,6 +380,7 @@ class test_thank_you_page(TestCase):
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, 'ourapp/thank_you_page.html')
 
+
 class test_delete_link_psy(TestCase):
     def setUp(self):
         self.client = Client()
@@ -370,7 +397,6 @@ class test_delete_link_psy(TestCase):
         link_exists = Lecture.objects.filter(id=link.id).exists()
         self.assertFalse(link_exists)
 
-
     def test_delete_link_psy_ten(self):
         # Create a Lecture object to be deleted
         link = Lecture.objects.create(forWhom='Test Link', link='http://example.com')
@@ -386,22 +412,19 @@ class test_behavioral_challenges_ten(TestCase):
     def setUp(self):
         self.client = Client()
 
+
 class test_choicelinktopic_par(TestCase):
     def setUp(self):
         self.client = Client()
-
-
-
-
-
-
 
 
 class TestAddSendSummaryToTeen(TestCase):
     def setUp(self):
         self.user = User.objects.create_user(username='test_user', password='password')
         self.client = Client()
-        self.TeengerFeedback = TeengerFeedback.objects.create(Teenger='test_user', date='2022-01-03', sammary='Initial summary')
+        self.TeengerFeedback = TeengerFeedback.objects.create(Teenger='test_user', date='2022-01-03',
+                                                              sammary='Initial summary')
+
     def test_add_send_sammary_to_teen(self):
         url = reverse('send_sammary_to_teen', kwargs={'username': 'test_user', 'date': self.TeengerFeedback.date})
         response = self.client.get(url)
@@ -417,17 +440,13 @@ class TestAddSendSummaryToTeen(TestCase):
         self.assertEqual(messages[0].message, 'summary sent successfully!')
 
 
-
-
 class feedback_psy_teengerTestCase(TestCase):
-     def test_feedback_psy_teenger(self):
-         response = self.client.get(reverse('feedback_psy_teenger'))
+    def test_feedback_psy_teenger(self):
+        response = self.client.get(reverse('feedback_psy_teenger'))
 
-         self.assertEqual(response.status_code, 200)
+        self.assertEqual(response.status_code, 200)
 
-         self.assertTemplateUsed(response, 'ourapp/feedback_psy_teenger.html')
-
-
+        self.assertTemplateUsed(response, 'ourapp/feedback_psy_teenger.html')
 
 
 class feedback_psy_parentTestCase(TestCase):
